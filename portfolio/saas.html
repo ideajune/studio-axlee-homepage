@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>FlowSync | 차세대 엔터프라이즈 올인원 협업 워크스페이스</title>
+  <meta name="description" content="흩어진 프로젝트 관리, 팀 메신저, 문서 협업을 0.1초 만에 실시간 동기화. 5,400+ 테크 기업이 선택한 초고속 B2B SaaS 솔루션.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+            }
+          },
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    html, body {
+      overflow-x: hidden !important;
+      max-width: 100vw !important;
+      width: 100% !important;
+      touch-action: pan-y;
+      -webkit-text-size-adjust: 100%;
+    }
+    body, h1, h2, h3, h4, p, span, a, button {
+      word-break: keep-all;
+    }
+    .tech-grid-bg {
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.18) 0%, transparent 50%),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 40px 40px, 40px 40px;
+    }
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    @keyframes floatCard1 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(1deg); }
+    }
+    @keyframes floatCard2 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(10px) rotate(-1deg); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.05); }
+    }
+    .animate-float-1 { animation: floatCard1 5s ease-in-out infinite; }
+    .animate-float-2 { animation: floatCard2 6s ease-in-out infinite; }
+    .animate-glow { animation: pulseGlow 4s ease-in-out infinite; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- Studio AXLee 공식 제작 인증 바 -->
+  <aside class="bg-slate-900/95 border-b border-slate-800 text-slate-300 text-xs py-2.5 px-6 sticky top-0 z-50 backdrop-blur-md flex flex-wrap items-center justify-between gap-3 shadow-lg">
+    <div class="flex items-center gap-2.5">
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>실서비스 런칭 완료</span>
+      </span>
+      <span class="text-slate-400 text-xs hidden sm:inline">|</span>
+      <span class="text-slate-300 font-medium">클라이언트: <strong>(주)플로우싱크 (FlowSync Inc.)</strong></span>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="text-[11px] text-slate-400 hidden md:inline">Designed & Engineered by Studio AXLee</span>
+      <a href="../index.html" class="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-sky-400 hover:text-sky-300 font-semibold text-xs border border-slate-700 flex items-center gap-1 transition">
+        <span>← Studio AXLee 메인으로 돌아가기</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- FlowSync 메인 네비게이션 -->
+  <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur sticky top-8 z-40">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-blue-600 flex items-center justify-center font-black text-white text-lg shadow-lg shadow-sky-500/30">
+          FS
+        </div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-white block">Flow<span class="text-sky-400">Sync</span></span>
+          <span class="text-[10px] text-slate-400 tracking-wider font-mono">ENTERPRISE CLOUD</span>
+        </div>
+      </div>
+      
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-300">
+        <a href="#features" class="hover:text-sky-400 transition flex items-center gap-1"><span>핵심 기능</span></a>
+        <a href="#demo" class="hover:text-sky-400 transition"><span>실시간 인터페이스</span></a>
+        <a href="#calculator" class="hover:text-sky-400 transition"><span>생산성 계산기</span></a>
+        <a href="#cases" class="hover:text-sky-400 transition"><span>도입 사례</span></a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#pricing" class="hidden sm:inline-block text-xs font-semibold text-slate-300 hover:text-white px-3 py-2">
+          요금 안내
+        </a>
+        <a href="#signup" class="px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs shadow-lg shadow-sky-500/25 transition">
+          14일 무료 체험 시작
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. 비대칭 2단 하이테크 히어로 섹션 (Split Hero with 3D UI Showcase) -->
+  <section class="tech-grid-bg pt-16 pb-24 px-6 relative overflow-hidden">
+    <!-- 배경 네온 글로우 -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-500/15 rounded-full blur-3xl pointer-events-none animate-glow"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
+      
+      <!-- 좌측: 강렬한 B2B 세일즈 카피 & 원클릭 워크스페이스 생성 -->
+      <div class="lg:col-span-6 text-left">
+        <!-- 릴리즈 뱃지 -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-950/80 border border-sky-400/40 text-sky-300 text-xs font-semibold mb-6">
+          <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>FlowSync 3.4 엔터프라이즈 AI 허브 공개</span>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-sky-400"></i>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight sm:leading-tight mb-6">
+          흩어진 팀의 모든 업무를<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-400 to-indigo-300">0.1초 만에 실시간 동기화</span>
+        </h1>
+
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
+          슬랙, 노션, 지라, 피그마에 분산된 프로젝트 현황을 하나의 대시보드로 통합하세요.<br class="hidden sm:block">
+          매주 반복되던 불필요한 주간 보고 미팅을 완전히 없애드립니다.
+        </p>
+
+        <!-- 즉시 워크스페이스 개설 폼 -->
+        <div id="signup" class="bg-slate-900/90 border border-sky-500/30 p-2 sm:p-2.5 rounded-2xl max-w-lg mb-6 shadow-2xl flex flex-col sm:flex-row gap-2">
+          <div class="flex items-center gap-2 px-3 py-2 flex-1">
+            <i data-lucide="mail" class="w-4 h-4 text-slate-400"></i>
+            <input type="email" id="trialEmail" placeholder="회사 이메일 입력 (예: name@company.com)" class="bg-transparent text-sm text-white placeholder-slate-500 focus:outline-none w-full">
+          </div>
+          <button onclick="handleTrialStart()" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-sky-500/30 transition flex items-center justify-center gap-1.5 shrink-0">
+            <span>무료 워크스페이스 시작</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <div id="trialToast" class="hidden mb-6 p-3 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs">
+          ✓ 워크스페이스 생성 초대 링크가 전송되었습니다! 데모 대시보드로 이동합니다.
+        </div>
+
+        <!-- 신뢰 지표 & 엔터프라이즈 뱃지 -->
+        <div class="flex flex-wrap items-center gap-4 text-xs text-slate-400 pt-2">
+          <div class="flex -space-x-2">
+            <span class="inline-flex h-8 w-8 rounded-full ring-2 ring-slate-900 bg-sky-600 items-center justify-center font-bold text-white text-[11px]">김</span>
+            <span class="inline-flex h-8 w-8 rounded-full ring-2 ring-slate-900 bg-blue-600 items-center justify-center font-bold text-white text-[11px]">박</span>
+            <span class="inline-flex h-8 w-8 rounded-full ring-2 ring-slate-900 bg-indigo-600 items-center justify-center font-bold text-white text-[11px]">이</span>
+            <span class="inline-flex h-8 w-8 rounded-full ring-2 ring-slate-900 bg-emerald-600 items-center justify-center font-bold text-white text-[11px]">+5k</span>
+          </div>
+          <div>
+            <div class="font-bold text-slate-200">5,420개 이상의 국내외 테크 기업 도입</div>
+            <div class="text-[11px] text-slate-400">평균 업무 속도 3.2배 향상 입증</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 우측: 3D 인터랙티브 플로팅 대시보드 쇼케이스 (다층 유리 카드) -->
+      <div class="lg:col-span-6 relative">
+        
+        <!-- 플로팅 위젯 1 (우측 상단: 글로벌 레이턴시) -->
+        <div class="absolute -top-6 -right-4 z-20 glass-panel rounded-2xl p-3.5 shadow-2xl animate-float-1 border border-sky-400/40 hidden sm:block">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span class="text-xs font-bold text-white font-mono">12ms Global Edge</span>
+          </div>
+          <p class="text-[10px] text-slate-400">실시간 데이터 정합성 99.99%</p>
+        </div>
+
+        <!-- 메인 인터랙티브 UI 카드 -->
+        <div class="glass-panel rounded-3xl p-3 sm:p-5 shadow-2xl relative z-10 border border-sky-500/30">
+          <!-- 상단 윈도우 컨트롤 & 탭 -->
+          <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-800">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+              <span class="text-xs font-mono text-slate-400 ml-2 hidden sm:inline">app.flowsync.io/enterprise</span>
+            </div>
+            <!-- 실시간 동기화 상태 -->
+            <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-sky-950/70 border border-sky-400/40 text-[11px] text-sky-300 font-mono">
+              <i data-lucide="radio" class="w-3 h-3 text-emerald-400 animate-pulse"></i>
+              <span>Live Synced</span>
+            </div>
+          </div>
+
+          <!-- 실제 대시보드 고화질 이미지 & UI 오버레이 -->
+          <div class="relative rounded-2xl overflow-hidden border border-slate-700/60 shadow-inner group">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="FlowSync 대시보드 화면" class="w-full h-64 sm:h-80 object-cover object-left-top transform group-hover:scale-105 transition-transform duration-700">
+            
+            <!-- 인앱 실시간 알림 토스트 오버레이 -->
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent flex flex-col justify-end p-5">
+              <div class="glass-panel rounded-xl p-3 max-w-sm border border-sky-400/40 shadow-xl">
+                <div class="flex items-center justify-between text-xs mb-1">
+                  <span class="font-bold text-sky-400 flex items-center gap-1">
+                    <i data-lucide="zap" class="w-3.5 h-3.5"></i> 자동 스프린트 동기화 완료
+                  </span>
+                  <span class="text-[10px] text-slate-400 font-mono">방금 전</span>
+                </div>
+                <p class="text-xs text-slate-200">개발팀 PR 24개가 지라 이슈와 자동으로 맵핑되었습니다.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 하단 지표 요약 바 -->
+          <div class="grid grid-cols-3 gap-3 mt-4 text-center">
+            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+              <div class="text-[10px] text-slate-400">주간 절감 시간</div>
+              <div class="text-base sm:text-lg font-bold text-sky-400">18.5 hrs</div>
+            </div>
+            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+              <div class="text-[10px] text-slate-400">협업 지연율</div>
+              <div class="text-base sm:text-lg font-bold text-emerald-400">-76.4%</div>
+            </div>
+            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+              <div class="text-[10px] text-slate-400">활성 워크스페이스</div>
+              <div class="text-base sm:text-lg font-bold text-white">12,400+</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 플로팅 위젯 2 (좌측 하단: 고객 활성화 알림) -->
+        <div class="absolute -bottom-6 -left-6 z-20 glass-panel rounded-2xl p-4 shadow-2xl animate-float-2 border border-blue-500/40 hidden sm:block max-w-xs">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-xs shrink-0">
+              ⚡
+            </div>
+            <div>
+              <div class="text-xs font-bold text-white">KakaoTech 엔터프라이즈</div>
+              <p class="text-[10px] text-slate-300">500명 전사 라이선스 도입 확정</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 2. 글로벌 엔터프라이즈 파트너 로고 바 -->
+  <section class="py-10 border-y border-slate-800/80 bg-slate-900/40">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p class="text-xs uppercase tracking-widest text-slate-500 font-bold mb-6">TRUSTED BY LEADING TECH INNOVATORS</p>
+      <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-14 opacity-60">
+        <span class="text-lg sm:text-xl font-black tracking-tighter text-slate-300">HYPERCONNECT</span>
+        <span class="text-lg sm:text-xl font-black tracking-tighter text-slate-300">SEND<span class="text-sky-400">BIRD</span></span>
+        <span class="text-lg sm:text-xl font-black tracking-tighter text-slate-300">RIDI</span>
+        <span class="text-lg sm:text-xl font-black tracking-tighter text-slate-300">WATCHA</span>
+        <span class="text-lg sm:text-xl font-black tracking-tighter text-slate-300">BUCKETPLACE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 실시간 인터랙티브 탭 쇼케이스 (다양한 UI 사진 & 기능 전환) -->
+  <section id="demo" class="py-24 px-6 relative">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <span class="text-xs font-bold uppercase tracking-widest text-sky-400 bg-sky-950/60 px-3.5 py-1 rounded-full border border-sky-500/30">INTERACTIVE PREVIEW</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 mb-4">하나의 플랫폼, 3개의 강력한 워크플로우</h2>
+        <p class="text-slate-400 text-sm max-w-xl mx-auto">상단 탭을 클릭하여 업무 환경별 실제 인터페이스를 확인해보세요.</p>
+      </div>
+
+      <!-- 탭 컨트롤러 버튼 -->
+      <div class="flex justify-center gap-2 sm:gap-4 mb-8 flex-wrap">
+        <button onclick="switchTab('analytics')" id="tab-analytics" class="px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/30">
+          📊 데이터 분석 & 대시보드
+        </button>
+        <button onclick="switchTab('kanban')" id="tab-kanban" class="px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all bg-slate-900 text-slate-400 hover:text-white border border-slate-800">
+          🚀 스프린트 & 칸반보드
+        </button>
+        <button onclick="switchTab('messenger')" id="tab-messenger" class="px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all bg-slate-900 text-slate-400 hover:text-white border border-slate-800">
+          💬 팀 협업 & AI 어시스턴트
+        </button>
+      </div>
+
+      <!-- 탭 내용 1: 데이터 분석 -->
+      <div id="content-analytics" class="glass-panel rounded-3xl p-6 sm:p-8 border border-sky-500/30 shadow-2xl grid md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-7 rounded-2xl overflow-hidden border border-slate-700 shadow-xl">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="데이터 분석 화면" class="w-full h-80 object-cover">
+        </div>
+        <div class="md:col-span-5 text-left">
+          <span class="text-xs font-bold text-sky-400 mb-2 block">실시간 비즈니스 인텔리전스</span>
+          <h3 class="text-2xl font-bold text-white mb-4">모든 프로젝트 진행 상태가 한 화면에서 숫자로 검증됩니다.</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            팀원들의 산출물, 지연 병목 지점, 스프린트 번다운 차트를 실시간으로 추적하여 프로젝트 납기 지연을 85% 사전에 예방합니다.
+          </p>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sky-400"></i> 주간 KPI 자동 집계 및 보고서 생성</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sky-400"></i> 외부 고객사 전용 뷰어 권한 분리</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 탭 내용 2: 칸반보드 (초기 hidden) -->
+      <div id="content-kanban" class="hidden glass-panel rounded-3xl p-6 sm:p-8 border border-sky-500/30 shadow-2xl grid md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-7 rounded-2xl overflow-hidden border border-slate-700 shadow-xl">
+          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1200&q=80" alt="칸반 보드 화면" class="w-full h-80 object-cover">
+        </div>
+        <div class="md:col-span-5 text-left">
+          <span class="text-xs font-bold text-blue-400 mb-2 block">초고속 드래그앤드롭 태스크 관리</span>
+          <h3 class="text-2xl font-bold text-white mb-4">개발자와 마케터가 동일한 언어로 협업합니다.</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            복잡한 이슈 트래킹을 직관적인 카드로 시각화. 깃허브 커밋 하나로 작업 카드가 자동으로 이동하며 슬랙 채널에 알림이 발송됩니다.
+          </p>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-400"></i> Github / GitLab 커밋 1초 동기화</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-400"></i> 담당자별 작업 부하 실시간 밸런싱</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 탭 내용 3: 메신저 & AI (초기 hidden) -->
+      <div id="content-messenger" class="hidden glass-panel rounded-3xl p-6 sm:p-8 border border-sky-500/30 shadow-2xl grid md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-7 rounded-2xl overflow-hidden border border-slate-700 shadow-xl">
+          <img src="images/saas_team.jpg" alt="팀 메신저 화면" class="w-full h-80 object-cover">
+        </div>
+        <div class="md:col-span-5 text-left">
+          <span class="text-xs font-bold text-indigo-400 mb-2 block">문맥 기반 인공지능 요약</span>
+          <h3 class="text-2xl font-bold text-white mb-4">하루 300개의 대화 중 핵심만 AI가 3줄 요약합니다.</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            휴가 복귀 후 밀린 수백 개의 메시지를 읽지 마세요. FlowSync AI가 나의 다음 할 일과 긴급 결재 건만 선별하여 브리핑합니다.
+          </p>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-indigo-400"></i> 미팅 회의록 자동 요약 및 액션 아이템 추출</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-indigo-400"></i> 엔드투엔드 암호화 비밀 채널 지원</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. 인터랙티브 생산성 계산기 (ROI Calculator) -->
+  <section id="calculator" class="py-20 px-6 bg-slate-900/50 border-y border-slate-800">
+    <div class="max-w-4xl mx-auto glass-panel p-8 sm:p-12 rounded-3xl border border-sky-500/30 text-center">
+      <span class="text-xs font-bold uppercase tracking-widest text-sky-400 mb-2 block">ROI CALCULATOR</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">우리 팀은 FlowSync로 얼마나 아낄 수 있을까요?</h2>
+      <p class="text-slate-400 text-xs sm:text-sm mb-8">팀원 수를 조절하여 매달 절감되는 커뮤니케이션 비용과 시간을 계산해보세요.</p>
+
+      <div class="max-w-xl mx-auto mb-10">
+        <div class="flex justify-between items-center text-sm font-bold text-white mb-2">
+          <span>현재 팀원 수:</span>
+          <span id="memberCountText" class="text-sky-400 font-mono text-xl">45명</span>
+        </div>
+        <input type="range" id="memberSlider" min="5" max="300" value="45" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-sky-400" oninput="calculateSavings(this.value)">
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+        <div class="bg-slate-950/70 p-4 rounded-2xl border border-slate-800">
+          <div class="text-xs text-slate-400 mb-1">월간 절감 시간</div>
+          <div id="savedHours" class="text-2xl font-black text-sky-400 font-mono">540 시간</div>
+        </div>
+        <div class="bg-slate-950/70 p-4 rounded-2xl border border-slate-800">
+          <div class="text-xs text-slate-400 mb-1">월간 인건비 가치 환산</div>
+          <div id="savedCost" class="text-2xl font-black text-emerald-400 font-mono">₩18,900,000</div>
+        </div>
+        <div class="bg-slate-950/70 p-4 rounded-2xl border border-slate-800">
+          <div class="text-xs text-slate-400 mb-1">예상 투자 대비 회수율</div>
+          <div class="text-2xl font-black text-indigo-400 font-mono">420% ROI</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 실제 개발 현장 사진 갤러리 & 도입 스토리 -->
+  <section id="cases" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-extrabold text-white mb-3">개발 현장의 진짜 이야기를 확인하세요</h2>
+        <p class="text-slate-400 text-sm">스타트업부터 유니콘 기업까지 FlowSync와 함께 일하는 방식의 변화를 경험했습니다.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- 사례 1 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-sky-500/40 transition">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" alt="핀테크 스타트업" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="p-6">
+            <span class="text-[11px] font-bold text-sky-400 block mb-1">시리즈 B 핀테크 A사</span>
+            <h4 class="text-base font-bold text-white mb-2">"주간 회의가 4시간에서 30분으로 줄었습니다."</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              각 부서마다 쓰던 툴이 달라 현황 파악에만 반나절이 걸렸는데, FlowSync 도입 후 모든 프로젝트 타임라인이 실시간으로 맞춰졌습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 사례 2 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-sky-500/40 transition">
+          <img src="images/saas_team.jpg" alt="글로벌 AI 연구소" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="p-6">
+            <span class="text-[11px] font-bold text-blue-400 block mb-1">글로벌 AI 솔루션 B사</span>
+            <h4 class="text-base font-bold text-white mb-2">"원격 근무 중에도 사무실 옆자리에 있는 느낌."</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              해외 4개국에 흩어진 80명의 엔지니어가 실시간 코드 블록과 문서 동시 편집으로 시차 없이 협업할 수 있게 되었습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 사례 3 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-sky-500/40 transition">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="엔터프라이즈 커머스" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="p-6">
+            <span class="text-[11px] font-bold text-indigo-400 block mb-1">커머스 플랫폼 C사</span>
+            <h4 class="text-base font-bold text-white mb-2">"블랙프라이데이 장애 대응 시간 90% 단축."</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              대규모 트래픽 발생 시 서버 모니터링 알림이 담당자 채널에 즉시 이슈 카드로 생성되어 즉각적인 조치가 가능했습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 최종 CTA 섹션 -->
+  <section class="py-24 px-6 text-center bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-t border-slate-800">
+    <div class="max-w-4xl mx-auto glass-panel p-10 sm:p-14 rounded-3xl border border-sky-400/40 shadow-2xl relative overflow-hidden">
+      <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-sky-500/20 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <h2 class="text-3xl sm:text-4xl font-black text-white mb-4">지금 팀의 일하는 방식을 혁신하세요</h2>
+      <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8">
+        신용카드 등록 없이 14일간 모든 프리미엄 기능을 제한 없이 체험할 수 있습니다.
+      </p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-3 max-w-md mx-auto">
+        <a href="#signup" class="px-8 py-4 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm shadow-xl shadow-sky-500/30 transition">
+          14일 무료 체험 시작하기
+        </a>
+        <a href="mailto:sales@flowsync.io" class="px-8 py-4 rounded-xl border border-slate-700 hover:bg-slate-800 text-slate-300 font-semibold text-sm transition">
+          엔터프라이즈 맞춤 상담
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="py-10 text-center text-xs text-slate-500 border-t border-slate-900 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-lg bg-sky-500 flex items-center justify-center font-bold text-black text-xs">FS</div>
+        <span class="text-white font-bold text-sm">FlowSync Inc.</span>
+        <span class="text-slate-600">|</span>
+        <span>대표이사: 정태환</span>
+        <span class="text-slate-600">|</span>
+        <span>사업자등록번호: 214-88-90123</span>
+      </div>
+      <div>
+        <p>© 2026 FlowSync Inc. All rights reserved. Designed & Engineered by Studio AXLee.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // 탭 스위처 로직
+    function switchTab(tabId) {
+      const tabs = ['analytics', 'kanban', 'messenger'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tab-' + t);
+        const content = document.getElementById('content-' + t);
+        if (t === tabId) {
+          btn.className = 'px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/30';
+          content.classList.remove('hidden');
+        } else {
+          btn.className = 'px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all bg-slate-900 text-slate-400 hover:text-white border border-slate-800';
+          content.classList.add('hidden');
+        }
+      });
+      lucide.createIcons();
+    }
+
+    // 생산성 계산기 로직
+    function calculateSavings(members) {
+      document.getElementById('memberCountText').innerText = members + '명';
+      const hours = members * 12; // 인당 주 3시간 * 4주 = 12시간
+      const cost = hours * 35000; // 시간당 가치 35,000원
+      document.getElementById('savedHours').innerText = hours.toLocaleString() + ' 시간';
+      document.getElementById('savedCost').innerText = '₩' + cost.toLocaleString();
+    }
+
+    // 무료 체험 신청 인터랙션
+    function handleTrialStart() {
+      const email = document.getElementById('trialEmail').value;
+      if (!email || !email.includes('@')) {
+        alert('올바른 회사 이메일 주소를 입력해 주세요.');
+        return;
+      }
+      const toast = document.getElementById('trialToast');
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        document.getElementById('demo').scrollIntoView({ behavior: 'smooth' });
+      }, 800);
+    }
+  </script>
+</body>
+</html>

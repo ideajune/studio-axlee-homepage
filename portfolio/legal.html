@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>법무법인 정율(正律) | 부장판검사 출신 전담 변호인단 24시 비밀상담</title>
+  <meta name="description" content="기업 법무, 형사 소송, 상속 분쟁 전문. 수천 건의 승소 판례와 전관 변호사진의 정밀 법률 전략으로 의뢰인의 권익을 끝까지 수호합니다.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              900: '#0b1329',
+              950: '#060a17',
+            },
+            gold: {
+              300: '#fde68a',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+            }
+          },
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['Chosunilbo_myungjo', 'Batang', 'Times New Roman', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    html, body {
+      overflow-x: hidden !important;
+      max-width: 100vw !important;
+      width: 100% !important;
+      touch-action: pan-y;
+      -webkit-text-size-adjust: 100%;
+    }
+    body, h1, h2, h3, h4, p, span, a, button {
+      word-break: keep-all;
+    }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #fde68a 0%, #f59e0b 50%, #d97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gold-foil-border {
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.08);
+    }
+    @keyframes slowZoom {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .animate-slow-zoom {
+      animation: slowZoom 25s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-navy-950 text-slate-200 font-sans antialiased selection:bg-gold-500 selection:text-black">
+
+  <!-- Studio AXLee 공식 제작 인증 바 -->
+  <aside class="bg-navy-900/95 border-b border-slate-800 text-slate-300 text-xs py-2.5 px-6 sticky top-0 z-50 backdrop-blur-md flex flex-wrap items-center justify-between gap-3 shadow-lg">
+    <div class="flex items-center gap-2.5">
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>실서비스 런칭 완료</span>
+      </span>
+      <span class="text-slate-400 text-xs hidden sm:inline">|</span>
+      <span class="text-slate-300 font-medium">클라이언트: <strong>법무법인 정율 (Jung Yul Law Firm)</strong></span>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="text-[11px] text-slate-400 hidden md:inline">Designed & Engineered by Studio AXLee</span>
+      <a href="../index.html" class="px-3 py-1 rounded-lg bg-navy-800 hover:bg-navy-700 text-gold-400 hover:text-gold-300 font-semibold text-xs border border-slate-700 flex items-center gap-1 transition">
+        <span>← Studio AXLee 메인으로 돌아가기</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- 실시간 긴급 사건 접수 알림 티커 -->
+  <div class="bg-navy-900/90 border-b border-gold-500/20 py-2 px-6 text-xs text-slate-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+        <span class="text-gold-400 font-bold">24시 긴급상황실:</span>
+        <span id="caseTicker" class="text-slate-300 font-medium transition-all">방금 전 서울고등법원 [특정경제범죄가중처벌법 무죄 판결 확정]</span>
+      </div>
+      <div class="hidden sm:flex items-center gap-4 text-slate-400">
+        <span>당직 변호사 직통: <strong class="text-white">02-588-1234</strong></span>
+        <span>비밀 보장 100%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 메인 헤더 -->
+  <header class="border-b border-slate-800/80 bg-navy-950/90 backdrop-blur sticky top-8 z-40">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3.5">
+        <div class="w-10 h-10 rounded border border-gold-500/60 bg-gold-500/10 flex items-center justify-center text-gold-400 font-serif font-black text-xl shadow-md">
+          正
+        </div>
+        <div>
+          <span class="text-xl font-bold tracking-tight text-white block font-serif">법무법인 정율 <span class="text-xs text-gold-400 font-sans tracking-normal font-semibold">正律</span></span>
+          <span class="text-[10px] text-slate-400 uppercase tracking-widest block font-serif">VERITAS & JUSTITIA EST. 1998</span>
+        </div>
+      </div>
+
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#about" class="hover:text-gold-400 transition">로펌 소개</a>
+        <a href="#attorneys" class="hover:text-gold-400 transition">변호사진</a>
+        <a href="#areas" class="hover:text-gold-400 transition">전문 분야</a>
+        <a href="#check" class="hover:text-gold-400 transition text-gold-400 font-semibold flex items-center gap-1">
+          <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> 1분 자가진단
+        </a>
+      </nav>
+
+      <a href="#contact" class="px-5 py-2.5 rounded bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-black font-extrabold text-xs shadow-lg shadow-gold-500/20 transition flex items-center gap-1.5">
+        <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+        <span>24시 비공개 상담</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- 1. 시네마틱 풀스크린 히어로 & 전관 대표변호사 쇼케이스 (Cinematic Editorial Split Hero) -->
+  <section class="relative min-h-[640px] flex items-center px-6 py-20 overflow-hidden border-b border-slate-800">
+    <!-- 배경 고화질 법원 도서관 사진 & 켄 번스 슬로우 줌 모션 -->
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1600&q=80" alt="정율 로펌 배경 서재" class="w-full h-full object-cover animate-slow-zoom opacity-25 filter grayscale contrast-125">
+      <div class="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/90 to-navy-950/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-12 items-center relative z-10">
+      
+      <!-- 좌측: 품격 있는 세리프 헤드라인 & 24시 긴급 접수 -->
+      <div class="lg:col-span-7 text-left">
+        <!-- 공식 인장 뱃지 -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs font-serif mb-6">
+          <i data-lucide="scale" class="w-3.5 h-3.5 text-gold-400"></i>
+          <span>대검찰청 중수부 및 서울고법 판사 출신 직접 서면 작성</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight sm:leading-tight mb-6 font-serif">
+          승소의 확신,<br>
+          <span class="gold-gradient-text">의뢰인의 내일을 지키는 법률 전략</span>
+        </h1>
+
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl font-serif">
+          복잡하고 막막한 분쟁일수록 초기 48시간의 골든타임이 결과를 좌우합니다.<br>
+          수천 건의 소송 경험과 판례 빅데이터로 의뢰인에게 가장 유리한 결과를 만듭니다.
+        </p>
+
+        <!-- 24시 전화 상담 & 비공개 접수 액션 바 -->
+        <div class="bg-navy-900/90 gold-foil-border p-4 sm:p-5 rounded-2xl max-w-xl mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3.5">
+            <div class="w-12 h-12 rounded-xl bg-gold-500/20 border border-gold-500/40 flex items-center justify-center text-gold-400 shrink-0">
+              <i data-lucide="phone" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <div class="text-[11px] text-gold-400 font-bold tracking-wider">주말·공휴일 24시간 긴급 연결</div>
+              <div class="text-xl sm:text-2xl font-black text-white font-mono tracking-wide">02-588-1234</div>
+            </div>
+          </div>
+          <a href="#contact" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-black font-extrabold text-xs sm:text-sm shadow-lg shadow-gold-500/25 transition text-center shrink-0">
+            비밀 상담 접수하기
+          </a>
+        </div>
+
+        <!-- 핵심 신뢰 지표 -->
+        <div class="grid grid-cols-3 gap-4 max-w-lg pt-2 border-t border-slate-800">
+          <div>
+            <div class="text-2xl sm:text-3xl font-black text-gold-400 font-serif">94.2%</div>
+            <div class="text-[11px] text-slate-400">민·형사 승소/합의율</div>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-black text-white font-serif">3,420건</div>
+            <div class="text-[11px] text-slate-400">누적 사건 해결 실적</div>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-black text-gold-400 font-serif">28년</div>
+            <div class="text-[11px] text-slate-400">서초동 본사 업력</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 우측: 대표변호사 실물 프로필 쇼케이스 카드 -->
+      <div class="lg:col-span-5 relative">
+        <div class="bg-navy-900/95 gold-foil-border rounded-3xl overflow-hidden shadow-2xl relative">
+          <!-- 변호사 사진 -->
+          <div class="relative h-80 overflow-hidden">
+            <img src="images/lawyer_ceo.jpg" alt="김정율 대표변호사" class="w-full h-full object-cover object-top">
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-6">
+              <span class="px-2.5 py-1 rounded bg-gold-500 text-black font-bold text-xs">대표변호사</span>
+              <h3 class="text-2xl font-bold text-white font-serif mt-1">김정율 변호사</h3>
+              <p class="text-xs text-gold-300 font-serif">사법연수원 28기 | 전 서울고등법원 판사</p>
+            </div>
+          </div>
+
+          <!-- 주요 약력 및 최근 승소 뱃지 -->
+          <div class="p-6 text-left space-y-3 text-xs text-slate-300">
+            <div class="flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-gold-400"></i>
+              <span>서울대학교 법과대학 법학과 졸업</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-gold-400"></i>
+              <span>전 서울중앙지방법원 형사합의부 판사</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-gold-400"></i>
+              <span>대한변호사협회 등록 [형사법·기업법무] 공인 전문</span>
+            </div>
+
+            <!-- 최근 주요 승소 판결 -->
+            <div class="pt-3 border-t border-slate-800 mt-4">
+              <div class="text-[10px] text-gold-400 font-bold mb-1.5 uppercase">RECENT MAJOR CASE</div>
+              <div class="bg-navy-950/80 p-3 rounded-xl border border-slate-800 text-[11px] leading-relaxed text-slate-300">
+                대기업 계열사 배임 혐의 (소송가액 120억 원) <strong>전부 무죄 판결</strong> 이끌어냄 (2025.11 확정)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 2. 인터랙티브 사건 자가진단 도구 (Legal Self-Assessment) -->
+  <section id="check" class="py-20 px-6 bg-navy-900/60 border-b border-slate-800">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-xs font-bold uppercase tracking-widest text-gold-400 mb-2 block font-serif">CASE EVALUATION</span>
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3 font-serif">내 사건 긴급도 및 초기 대응 전략 1분 진단</h2>
+      <p class="text-slate-400 text-sm mb-8">현재 처하신 상황을 선택하시면 최적의 법적 대응 방안을 안내해 드립니다.</p>
+
+      <div class="bg-navy-950 p-6 sm:p-8 rounded-2xl gold-foil-border text-left">
+        <div class="mb-6">
+          <label class="block text-xs font-bold text-gold-400 mb-2">1단계: 해당되는 법률 분쟁 분야를 선택하세요</label>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            <button onclick="setCaseField('criminal', this)" class="p-3 rounded-xl bg-gold-500 text-black font-bold text-xs text-center border border-gold-400 case-field-btn">
+              형사 / 재산범죄
+            </button>
+            <button onclick="setCaseField('corporate', this)" class="p-3 rounded-xl bg-navy-900 text-slate-300 font-medium text-xs text-center border border-slate-800 case-field-btn hover:border-gold-500/50">
+              기업 법무 / 횡령
+            </button>
+            <button onclick="setCaseField('realestate', this)" class="p-3 rounded-xl bg-navy-900 text-slate-300 font-medium text-xs text-center border border-slate-800 case-field-btn hover:border-gold-500/50">
+              부동산 / 건설 분쟁
+            </button>
+            <button onclick="setCaseField('family', this)" class="p-3 rounded-xl bg-navy-900 text-slate-300 font-medium text-xs text-center border border-slate-800 case-field-btn hover:border-gold-500/50">
+              상속 / 가사 분쟁
+            </button>
+          </div>
+        </div>
+
+        <!-- 진단 결과 안내 박스 -->
+        <div id="diagnosticResult" class="p-4 rounded-xl bg-navy-900 border border-gold-500/30 mb-6">
+          <div class="flex items-center gap-2 text-gold-400 font-bold text-xs mb-1">
+            <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+            <span>초기 진술 번복 불가 주의보 (형사 분야)</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            경찰 1차 출석 조사 전 진술 전략이 구속영장 청구 및 기소 여부를 좌우합니다. <strong>변호인 입회 하에 첫 조사를 받으실 것을 강력히 권고드립니다.</strong>
+          </p>
+        </div>
+
+        <div class="text-center">
+          <a href="#contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-black font-extrabold text-xs transition">
+            <span>담당 전담 변호사에게 1:1 비밀상담 신청</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 전관 출신 전담 변호사진 사진 갤러리 쇼케이스 -->
+  <section id="attorneys" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-extrabold text-white mb-3 font-serif">실력으로 증명하는 정율의 전담 변호인단</h2>
+        <p class="text-slate-400 text-sm">각 분야 부장판사, 부장검사 출신 변호사진이 팀을 이루어 하나의 사건을 입체적으로 방어합니다.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 변호사 1 -->
+        <div class="bg-navy-900 border border-slate-800 rounded-2xl overflow-hidden group hover:border-gold-500/50 transition">
+          <img src="images/lawyer_1.jpg" alt="이성우 파트너 변호사" class="w-full h-64 object-cover object-top group-hover:scale-105 transition-transform duration-500">
+          <div class="p-5 text-left">
+            <span class="text-[10px] text-gold-400 font-bold block mb-1">형사소송 전담팀장</span>
+            <h4 class="text-lg font-bold text-white font-serif mb-1">이성우 변호사</h4>
+            <p class="text-xs text-slate-400 mb-3">전 대검찰청 특수부 검사</p>
+            <p class="text-[11px] text-slate-400 leading-relaxed border-t border-slate-800 pt-2">
+              수사 초기 단계부터 집행유예 및 무죄 판결을 이끌어내는 치밀한 법리 분석 전문.
+            </p>
+          </div>
+        </div>
+
+        <!-- 변호사 2 -->
+        <div class="bg-navy-900 border border-slate-800 rounded-2xl overflow-hidden group hover:border-gold-500/50 transition">
+          <img src="images/lawyer_2.jpg" alt="한소희 파트너 변호사" class="w-full h-64 object-cover object-top group-hover:scale-105 transition-transform duration-500">
+          <div class="p-5 text-left">
+            <span class="text-[10px] text-gold-400 font-bold block mb-1">기업법무 / M&A 전담</span>
+            <h4 class="text-lg font-bold text-white font-serif mb-1">한소희 변호사</h4>
+            <p class="text-xs text-slate-400 mb-3">전 서울중앙지법 상사전담 판사</p>
+            <p class="text-[11px] text-slate-400 leading-relaxed border-t border-slate-800 pt-2">
+              주주 분쟁, 경영권 방어, 복잡한 지분 계약서 검토 및 기업 손해배상 소송 전담.
+            </p>
+          </div>
+        </div>
+
+        <!-- 변호사 3 -->
+        <div class="bg-navy-900 border border-slate-800 rounded-2xl overflow-hidden group hover:border-gold-500/50 transition">
+          <img src="images/lawyer_3.jpg" alt="박준형 파트너 변호사" class="w-full h-64 object-cover object-top group-hover:scale-105 transition-transform duration-500">
+          <div class="p-5 text-left">
+            <span class="text-[10px] text-gold-400 font-bold block mb-1">부동산 / 재개발 전담</span>
+            <h4 class="text-lg font-bold text-white font-serif mb-1">박준형 변호사</h4>
+            <p class="text-xs text-slate-400 mb-3">사법연수원 34기 수석</p>
+            <p class="text-[11px] text-slate-400 leading-relaxed border-t border-slate-800 pt-2">
+              수백억 대 재개발·재건축 총회 결의 무효 확인 및 공사대금 청구 소송 완승.
+            </p>
+          </div>
+        </div>
+
+        <!-- 변호사 4 -->
+        <div class="bg-navy-900 border border-slate-800 rounded-2xl overflow-hidden group hover:border-gold-500/50 transition">
+          <img src="images/lawyer_4.jpg" alt="정민아 파트너 변호사" class="w-full h-64 object-cover object-top group-hover:scale-105 transition-transform duration-500">
+          <div class="p-5 text-left">
+            <span class="text-[10px] text-gold-400 font-bold block mb-1">상속 / 프라이빗 자산관리</span>
+            <h4 class="text-lg font-bold text-white font-serif mb-1">정민아 변호사</h4>
+            <p class="text-xs text-slate-400 mb-3">대한변협 가사법 전문 변호사</p>
+            <p class="text-[11px] text-slate-400 leading-relaxed border-t border-slate-800 pt-2">
+              고액 자산가 유류분 반환 청구 및 기여분 인정 판결, 가업 승계 법률 플랜 수립.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 서초동 주사무소 시설 갤러리 -->
+  <section class="py-16 px-6 bg-navy-900/30 border-y border-slate-800">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-xs font-bold text-gold-400 uppercase tracking-widest font-serif">OFFICE GALLERY</span>
+          <h3 class="text-2xl font-bold text-white font-serif mt-1">철저한 보안과 비밀이 유지되는 서초동 본사</h3>
+        </div>
+        <span class="text-xs text-slate-400 hidden sm:inline">서초역 1번 출구 도보 2분</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="rounded-2xl overflow-hidden h-52 border border-slate-800">
+          <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80" alt="대회의실" class="w-full h-full object-cover">
+        </div>
+        <div class="rounded-2xl overflow-hidden h-52 border border-slate-800">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="정율 빌딩 전경" class="w-full h-full object-cover">
+        </div>
+        <div class="rounded-2xl overflow-hidden h-52 border border-slate-800">
+          <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80" alt="1:1 비밀상담실" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 24시 비공개 상담 신청 폼 -->
+  <section id="contact" class="py-24 px-6">
+    <div class="max-w-3xl mx-auto bg-navy-900/90 gold-foil-border p-8 sm:p-12 rounded-3xl shadow-2xl">
+      <div class="text-center mb-10">
+        <span class="w-10 h-10 rounded-full bg-gold-500/20 text-gold-400 inline-flex items-center justify-center font-bold mb-3">
+          <i data-lucide="lock" class="w-5 h-5"></i>
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white font-serif mb-2">24시 비공개 1:1 사건 상담 접수</h2>
+        <p class="text-xs sm:text-sm text-slate-400">
+          작성하신 모든 정보는 변호사법 제26조에 의해 <strong>100% 비밀이 보장</strong>되며, 담당 변호사 외 열람되지 않습니다.
+        </p>
+      </div>
+
+      <form onsubmit="handleLegalSubmit(event)" class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs text-slate-300 mb-1">성함 / 의뢰인명</label>
+            <input type="text" required placeholder="홍길동" class="w-full px-4 py-3 rounded-xl bg-navy-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-gold-500">
+          </div>
+          <div>
+            <label class="block text-xs text-slate-300 mb-1">연락처 (휴대전화)</label>
+            <input type="tel" required placeholder="010-0000-0000" class="w-full px-4 py-3 rounded-xl bg-navy-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-gold-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs text-slate-300 mb-1">상담 희망 사건 유형</label>
+          <select class="w-full px-4 py-3 rounded-xl bg-navy-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-gold-500">
+            <option>형사 소송 (경찰/검찰 조사, 구속영장 청구)</option>
+            <option>기업 법무 / 횡령 / 배임 / 영업비밀 침해</option>
+            <option>부동산 / 건설 분쟁 / 재개발 / 명도소송</option>
+            <option>상속 분쟁 / 유류분 반환 / 이혼 / 재산분할</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs text-slate-300 mb-1">사건 요약 및 현재 진행 상황</label>
+          <textarea rows="4" required placeholder="경찰 출석 요구를 받으셨거나 소장을 수령하신 상황, 또는 분쟁의 핵심 내용을 편안하게 적어주세요." class="w-full px-4 py-3 rounded-xl bg-navy-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-gold-500"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-black font-extrabold text-sm shadow-xl shadow-gold-500/25 transition">
+          비공개 상담 신청서 즉시 제출
+        </button>
+      </form>
+
+      <div id="legalSuccessToast" class="hidden mt-6 p-4 rounded-xl bg-emerald-950 border border-emerald-500/40 text-emerald-300 text-xs text-center">
+        ✓ 상담 신청이 암호화되어 안전하게 접수되었습니다. 당직 전담 변호사가 30분 이내에 비공개 번호로 연락드립니다.
+      </div>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="py-10 text-center text-xs text-slate-500 border-t border-slate-800 bg-navy-950">
+    <div class="max-w-7xl mx-auto px-6 space-y-2">
+      <p>서울시 서초구 서초대로 250 정율빌딩 5~7층 (서초동) | 대표변호사: 김정율 | 사업자등록번호: 214-81-78901</p>
+      <p>전화: 02-588-1234 | 팩스: 02-588-1235 | 이메일: contact@jungyul-law.com</p>
+      <p class="pt-2 text-slate-600">© 2026 법무법인 정율. All rights reserved. Designed & Engineered by Studio AXLee.</p>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // 긴급 사건 티커 자동 롤링 로직
+    const cases = [
+      "방금 전 서울고등법원 [특정경제범죄가중처벌법 무죄 판결 확정]",
+      "12분 전 서초경찰서 [배임 혐의 불송치(무혐의) 처분 달성]",
+      "34분 전 서울중앙지법 [상속 유류분 48억 원 방어 승소]",
+      "1시간 전 [기업 영업비밀 침해 가처분 전격 인용 결정]"
+    ];
+    let caseIdx = 0;
+    setInterval(() => {
+      caseIdx = (caseIdx + 1) % cases.length;
+      const el = document.getElementById('caseTicker');
+      if (el) {
+        el.style.opacity = '0';
+        setTimeout(() => {
+          el.innerText = cases[caseIdx];
+          el.style.opacity = '1';
+        }, 300);
+      }
+    }, 4000);
+
+    // 자가진단 필드 선택기
+    function setCaseField(field, btn) {
+      document.querySelectorAll('.case-field-btn').forEach(b => {
+        b.className = 'p-3 rounded-xl bg-navy-900 text-slate-300 font-medium text-xs text-center border border-slate-800 case-field-btn hover:border-gold-500/50';
+      });
+      btn.className = 'p-3 rounded-xl bg-gold-500 text-black font-bold text-xs text-center border border-gold-400 case-field-btn';
+
+      const res = document.getElementById('diagnosticResult');
+      if (field === 'criminal') {
+        res.innerHTML = '<div class="flex items-center gap-2 text-gold-400 font-bold text-xs mb-1"><i data-lucide="alert-triangle" class="w-4 h-4"></i><span>초기 진술 번복 불가 주의보 (형사 분야)</span></div><p class="text-xs text-slate-300 leading-relaxed">경찰 1차 출석 조사 전 진술 전략이 구속영장 청구 및 기소 여부를 좌우합니다. <strong>변호인 입회 하에 첫 조사를 받으실 것을 강력히 권고드립니다.</strong></p>';
+      } else if (field === 'corporate') {
+        res.innerHTML = '<div class="flex items-center gap-2 text-gold-400 font-bold text-xs mb-1"><i data-lucide="shield" class="w-4 h-4"></i><span>기업 비밀 보호 및 가처분 긴급 신청 요망</span></div><p class="text-xs text-slate-300 leading-relaxed">횡령·배임 및 영업비밀 유출 건은 증거인멸 우려로 압수수색 가능성이 높습니다. <strong>즉각적인 디지털 포렌식 증거 보전 조치가 필수적입니다.</strong></p>';
+      } else if (field === 'realestate') {
+        res.innerHTML = '<div class="flex items-center gap-2 text-gold-400 font-bold text-xs mb-1"><i data-lucide="home" class="w-4 h-4"></i><span>점유이전금지가처분 선행 권고</span></div><p class="text-xs text-slate-300 leading-relaxed">본안 소송 승소 후에도 점유자 변경 시 집행이 불가능해질 수 있으므로, <strong>소장 접수와 동시에 보전 처분이 수반되어야 합니다.</strong></p>';
+      } else if (field === 'family') {
+        res.innerHTML = '<div class="flex items-center gap-2 text-gold-400 font-bold text-xs mb-1"><i data-lucide="award" class="w-4 h-4"></i><span>유류분 소멸시효 1년 기산점 확인 필수</span></div><p class="text-xs text-slate-300 leading-relaxed">상속 개시 및 증여 사실을 안 날로부터 1년 이내에 청구해야 합니다. <strong>금융거래정보 제출명령을 통한 은닉 재산 추적이 관건입니다.</strong></p>';
+      }
+      lucide.createIcons();
+    }
+
+    // 상담 제출 이벤트
+    function handleLegalSubmit(e) {
+      e.preventDefault();
+      document.getElementById('legalSuccessToast').classList.remove('hidden');
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

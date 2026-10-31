@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Studio AXLee | 매출을 만드는 1:1 맞춤형 고전환 웹 & 랜딩페이지 제작</title>
+  <meta name="description" content="외주 맡기고 속 터지셨나요? 불필요한 거품을 뺀 린(Lean) 프로세스로 3일 만에 완성되는 고전환 프리미엄 랜딩페이지 제작 전문 스튜디오 Studio AXLee입니다.">
+  <link rel="icon" href="logo.jpg" type="image/jpeg">
+  
+  <!-- 오픈그래프 (SNS 공유 미리보기) -->
+  <meta property="og:title" content="Studio AXLee - 매출을 만드는 1:1 맞춤형 웹 제작">
+  <meta property="og:description" content="단순히 예쁜 웹사이트가 아닌, 고객의 문의와 결제를 이끌어내는 고전환 랜딩페이지를 제작합니다.">
+  <meta property="og:image" content="logo.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+              dark: '#0f172a'
+            }
+          },
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Pretendard 폰트 -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* 모바일 좌우 스크롤(왔다갔다 현상) 100% 방지 및 완벽 고정 */
+    html, body {
+      overflow-x: hidden !important;
+      max-width: 100vw !important;
+      width: 100% !important;
+      position: relative;
+      touch-action: pan-y;
+      -webkit-text-size-adjust: 100%;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    /* 한글 자연스러운 어절 단위 줄바꿈 및 좌우 텍스트 밸런스 */
+    body, h1, h2, h3, h4, h5, h6, p, span, a, li, label, button {
+      word-break: keep-all; /* 단어 중간이 잘리지 않고 의미 있는 어절 단위로 줄바꿈 */
+      overflow-wrap: break-word;
+    }
+    h1, h2, h3, h4, .text-balance {
+      text-wrap: balance; /* 제목 줄바꿈 시 좌우 행 길이를 균등하게 자동 조율 */
+    }
+    p, .text-pretty {
+      text-wrap: pretty; /* 단락 마지막 줄에 한 단어만 어색하게 남는 고아 현상(orphan) 방지 */
+    }
+    .glass-nav {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(139, 92, 246, 0.4);
+      transform: translateY(-2px);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #c4b5fd 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .glow-bg {
+      position: absolute;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, rgba(14, 165, 233, 0.04) 50%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white relative overflow-x-hidden w-full max-w-full">
+
+  <!-- 배경 그라디언트 효과 (화면 밖 돌출 방지 래퍼) -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0 max-w-full">
+    <div class="glow-bg top-0 left-1/2 -translate-x-1/2"></div>
+    <div class="glow-bg top-[30%] -left-40"></div>
+    <div class="glow-bg top-[70%] -right-40"></div>
+  </div>
+
+  <!-- 1. 네비게이션 바 -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <img src="logo.jpg" alt="Studio AXLee 로고" class="w-11 h-11 rounded-xl object-cover shadow-lg shadow-sky-500/25 border border-sky-400/40 group-hover:scale-105 transition-transform">
+        <span class="text-2xl font-black tracking-tight text-white">Studio <span class="text-sky-400">AXLee</span></span>
+      </a>
+
+      <!-- 데스크톱 메뉴 -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#why" class="hover:text-white transition-colors">스튜디오 소개</a>
+        <a href="#portfolio" class="hover:text-white transition-colors">포트폴리오</a>
+        <a href="#process" class="hover:text-white transition-colors">제작 프로세스</a>
+        <a href="#pricing" class="hover:text-white transition-colors">정찰제 안내</a>
+        <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+      </nav>
+
+      <!-- CTA 버튼 & 모바일 햄버거 메뉴 버튼 -->
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white text-sm font-semibold shadow-lg shadow-brand-600/25 transition-all transform hover:-translate-y-0.5">
+          <span>1:1 무료 맞춤 견적</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+
+        <!-- 모바일 햄버거 버튼 -->
+        <button id="mobileMenuBtn" type="button" class="md:hidden p-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none" aria-label="메뉴 열기">
+          <i id="menuIcon" data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 모바일 드롭다운 메뉴 (모바일 전용) -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-slate-800/80 bg-slate-950/95 backdrop-blur-xl px-6 py-5 transition-all shadow-2xl">
+      <nav class="flex flex-col space-y-3 text-base font-medium text-slate-300">
+        <a href="#why" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-900/90 hover:text-sky-400 transition-colors flex items-center justify-between">
+          <span>스튜디오 소개</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+        </a>
+        <a href="#portfolio" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-900/90 hover:text-sky-400 transition-colors flex items-center justify-between">
+          <span>포트폴리오</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+        </a>
+        <a href="#process" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-900/90 hover:text-sky-400 transition-colors flex items-center justify-between">
+          <span>제작 프로세스</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+        </a>
+        <a href="#pricing" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-900/90 hover:text-sky-400 transition-colors flex items-center justify-between">
+          <span>정찰제 안내</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+        </a>
+        <a href="#faq" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-900/90 hover:text-sky-400 transition-colors flex items-center justify-between">
+          <span>FAQ</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+        </a>
+        <div class="pt-3 border-t border-slate-800/80">
+          <a href="#contact" class="mobile-nav-link w-full py-3 px-4 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-semibold flex items-center justify-center gap-2 shadow-lg shadow-brand-600/25">
+            <span>1:1 무료 맞춤 견적 신청</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 2. 히어로 섹션 (Hero Section - 인터랙티브 모션 그래픽 배경) -->
+  <section class="relative pt-36 pb-20 md:pt-48 md:pb-32 px-6 z-10 overflow-hidden">
+    <!-- [신규] 배경 인터랙티브 네온 네트워크 & 웨이브 모션 캔버스 -->
+    <canvas id="hero-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+    
+    <!-- 텍스트 가독성을 위한 비네팅 & 오로라 오버레이 -->
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-transparent to-slate-950 pointer-events-none z-0"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-brand-600/15 via-sky-500/10 to-transparent rounded-full blur-3xl pointer-events-none z-0"></div>
+
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+      <!-- 뱃지 -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-brand-500/30 text-brand-300 text-xs md:text-sm font-medium mb-8">
+        <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>매출을 만드는 전환율 중심 1:1 맞춤 웹 에이전시</span>
+      </div>
+
+      <!-- 메인 카피 -->
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-snug sm:leading-tight mb-8">
+        단순히 예쁜 사이트는 그만.<br>
+        <span class="gradient-text">고객의 문의를 부르는<br class="block sm:hidden"> 고전환 랜딩페이지</span>
+      </h1>
+
+      <p class="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        복잡한 외계어 코딩 용어나 불필요한 미팅 거품은 걷어냈습니다.<br class="hidden sm:block">
+        비즈니스 본질에 맞춘 세일즈 기획부터 초고속 모바일 반응형 웹 구축까지,<br class="hidden sm:block">
+        <strong class="text-slate-200 font-semibold">대표님의 귀한 시간과 마케팅 예산을 지켜드립니다.</strong>
+      </p>
+
+      <!-- CTA 버튼 그룹 -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-base shadow-xl shadow-brand-600/30 transition-all flex items-center justify-center gap-2">
+          <i data-lucide="message-square" class="w-5 h-5"></i>
+          <span>지금 1:1 맞춤 제작 상담하기</span>
+        </a>
+        <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card hover:bg-slate-800 text-slate-200 font-semibold text-base transition-all flex items-center justify-center gap-2">
+          <span>포트폴리오 둘러보기</span>
+          <i data-lucide="chevron-down" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <!-- 신뢰 지표 (Proof) -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-10 border-t border-slate-800/80 max-w-4xl mx-auto">
+        <div class="p-3 sm:p-4 text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-white mb-1">최단 72시간</div>
+          <div class="text-xs sm:text-sm text-slate-400">린(Lean) 1차 시안 납품</div>
+        </div>
+        <div class="p-3 sm:p-4 text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-white mb-1">100%</div>
+          <div class="text-xs sm:text-sm text-slate-400">모바일 반응형 & 속도 최적화</div>
+        </div>
+        <div class="p-3 sm:p-4 text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-white mb-1">4.9 / 5.0</div>
+          <div class="text-xs sm:text-sm text-slate-400">클라이언트 소통 만족도</div>
+        </div>
+        <div class="p-3 sm:p-4 text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-white mb-1">정찰제</div>
+          <div class="text-xs sm:text-sm text-slate-400">숨은 추가 비용 0원 보장</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 문제 제기 (Pain Points) -->
+  <section class="py-20 px-6 bg-slate-900/40 border-y border-slate-800/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-xs uppercase tracking-widest text-brand-400 font-bold mb-3">Pain Points</h2>
+        <p class="text-2xl sm:text-3xl font-bold text-white">기존 웹 외주, 혹시 이런 피로를 겪으셨나요?</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="glass-card p-8 rounded-2xl">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center mb-6">
+            <i data-lucide="clock" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">끝없이 늘어지는 제작 일정</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            "작업 중입니다"라는 말만 믿고 기다리다 신제품 런칭과 마케팅 타이밍을 모두 놓치셨나요?
+          </p>
+        </div>
+
+        <div class="glass-card p-8 rounded-2xl">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-6">
+            <i data-lucide="message-circle-off" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">비즈니스를 모르는 답답한 소통</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            내 사업의 타깃 고객과 세일즈 구조를 전혀 이해하지 못하고, 시키는 것만 기계처럼 만드는 개발사에 실망하셨나요?
+          </p>
+        </div>
+
+        <div class="glass-card p-8 rounded-2xl">
+          <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center mb-6">
+            <i data-lucide="trending-down" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">비싼 돈 들였는데 문의는 0건</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            겉보기에는 화려하지만 정작 방문자가 왜 구매해야 하는지 설득하지 못하는 홈페이지는 전시품에 불과합니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 우리의 솔루션 (Why Studio AXLee) -->
+  <section id="why" class="py-24 px-6 relative">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 sm:mb-20">
+        <h2 class="text-xs uppercase tracking-widest text-brand-400 font-bold mb-3">Our Principles</h2>
+        <p class="text-2xl sm:text-4xl font-extrabold text-white">
+          Studio AXLee는 <span class="gradient-text">'세일즈 전환'</span>에 집중합니다
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+        <!-- 솔루션 1 -->
+        <div class="glass-card p-6 sm:p-8 rounded-2xl flex gap-5 sm:gap-6">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-brand-600/20 text-brand-400 flex items-center justify-center shrink-0">
+            <i data-lucide="zap" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+          </div>
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">거품을 뺀 린(Lean) 프로세스로<br class="block sm:hidden"> 3~5일 완성</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              기존 에이전시의 불필요한 중간 마진과 장기 회의를 걷어냈습니다. 검증된 프론트엔드 아키텍처와 최신 엔지니어링 기술로 핵심 기능을 고속으로 구축합니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 솔루션 2 -->
+        <div class="glass-card p-6 sm:p-8 rounded-2xl flex gap-5 sm:gap-6">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-sky-600/20 text-sky-400 flex items-center justify-center shrink-0">
+            <i data-lucide="target" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+          </div>
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">고객 심리를 관통하는<br class="block sm:hidden"> 세일즈 퍼널 카피라이팅</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              단순 기능 소개가 아닙니다. 고객의 결핍 자극 ➔ 해결책 증명 ➔ 후기 신뢰 ➔ 문의 행동(CTA)으로 자연스럽게 이어지도록 페이지 흐름을 정밀 설계합니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 솔루션 3 -->
+        <div class="glass-card p-6 sm:p-8 rounded-2xl flex gap-5 sm:gap-6">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center shrink-0">
+            <i data-lucide="smartphone" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+          </div>
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">0.5초 초경량 로딩 &<br class="block sm:hidden"> 100% 모바일 최적화</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              전체 유입의 80% 이상을 차지하는 스마트폰 화면에서 튕김 없이 즉시 로딩되도록 가벼운 모던 웹 기술로 완벽하게 반응형을 구현합니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 솔루션 4 -->
+        <div class="glass-card p-6 sm:p-8 rounded-2xl flex gap-5 sm:gap-6">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center shrink-0">
+            <i data-lucide="shield-check" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+          </div>
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">투명한 정찰제 &<br class="block sm:hidden"> 유지보수 스트레스 제로</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              작업 전 상세 요구사항을 확정하여 납품 후 추가 비용 분쟁이 없습니다. 누구나 쉽게 텍스트를 바꿀 수 있는 직관적인 매뉴얼을 함께 제공합니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 포트폴리오 (Portfolio) -->
+  <section id="portfolio" class="py-24 px-6 bg-slate-900/30 border-y border-slate-800/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div>
+          <h2 class="text-xs uppercase tracking-widest text-brand-400 font-bold mb-3">Portfolio</h2>
+          <p class="text-2xl sm:text-3xl font-extrabold text-white">맞춤형 제작 레퍼런스</p>
+        </div>
+        <p class="text-slate-400 text-xs sm:text-sm mt-3 md:mt-0">스타트업, 전문직 로펌, 교육 등<br class="block sm:hidden"> 다양한 비즈니스 웹을 구축합니다.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- 포트폴리오 1 (B2B SaaS) -->
+        <div class="glass-card rounded-2xl overflow-hidden group flex flex-col justify-between">
+          <div>
+            <div class="h-48 bg-gradient-to-tr from-indigo-950 via-slate-900 to-blue-900 p-6 flex flex-col justify-between relative overflow-hidden">
+              <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-all"></div>
+              <span class="inline-block px-3 py-1 rounded-full bg-slate-900/80 text-xs font-semibold text-sky-400 self-start">B2B SaaS</span>
+              <div class="relative z-10">
+                <h4 class="text-lg sm:text-xl font-bold text-white mb-1">FlowSync 올인원 워크스페이스</h4>
+                <p class="text-xs text-slate-300">스타트업 엔터프라이즈 솔루션 소개 및 도입 랜딩</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex flex-wrap gap-2 mb-4 text-xs text-slate-400">
+                <span class="px-2 py-1 rounded bg-slate-800">제작기간 4일</span>
+                <span class="px-2 py-1 rounded bg-slate-800">대시보드 목업</span>
+                <span class="px-2 py-1 rounded bg-slate-800">요금제 표</span>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                복잡한 엔터프라이즈 기능을 직관적인 대시보드 목업과 인포그래픽으로 시각화하여 사전 문의 전환율을 2.8배 개선했습니다.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6">
+            <a href="portfolio/saas.html" target="_blank" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-brand-600 text-slate-200 hover:text-white text-xs font-bold text-center transition-all flex items-center justify-center gap-1.5 border border-slate-700/60 hover:border-brand-500">
+              <span>라이브 데모 사이트 체험</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 포트폴리오 2 (전문직/로펌) -->
+        <div class="glass-card rounded-2xl overflow-hidden group flex flex-col justify-between">
+          <div>
+            <div class="h-48 bg-gradient-to-tr from-amber-950 via-slate-900 to-navy-900 p-6 flex flex-col justify-between relative overflow-hidden">
+              <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-all"></div>
+              <span class="inline-block px-3 py-1 rounded-full bg-slate-900/80 text-xs font-semibold text-amber-400 self-start">전문직 / 로펌</span>
+              <div class="relative z-10">
+                <h4 class="text-lg sm:text-xl font-bold text-white mb-1">법무법인 정율 공식 웹사이트</h4>
+                <p class="text-xs text-slate-300">신뢰감과 프라이버시 중심의 24시 비밀 상담 접수</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex flex-wrap gap-2 mb-4 text-xs text-slate-400">
+                <span class="px-2 py-1 rounded bg-slate-800">제작기간 3일</span>
+                <span class="px-2 py-1 rounded bg-slate-800">승소 판결 피드</span>
+                <span class="px-2 py-1 rounded bg-slate-800">1:1 비밀상담</span>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                중후한 딥 네이비 & 골드 톤으로 로펌의 전문성을 극대화하고, 모바일에서 한 손으로 즉시 접수하는 간편 비밀상담 폼을 구축했습니다.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6">
+            <a href="portfolio/legal.html" target="_blank" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-brand-600 text-slate-200 hover:text-white text-xs font-bold text-center transition-all flex items-center justify-center gap-1.5 border border-slate-700/60 hover:border-brand-500">
+              <span>라이브 데모 사이트 체험</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 포트폴리오 3 (프리미엄 입시 학원) -->
+        <div class="glass-card rounded-2xl overflow-hidden group flex flex-col justify-between">
+          <div>
+            <div class="h-48 bg-gradient-to-tr from-blue-950 via-slate-900 to-indigo-900 p-6 flex flex-col justify-between relative overflow-hidden">
+              <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-all"></div>
+              <span class="inline-block px-3 py-1 rounded-full bg-slate-900/80 text-xs font-semibold text-blue-400 self-start">교육 / 학원</span>
+              <div class="relative z-10">
+                <h4 class="text-lg sm:text-xl font-bold text-white mb-1">프라임 프렙 명문 입시 아카데미</h4>
+                <p class="text-xs text-slate-300">대치동 스타일 프리미엄 학원 & 레벨테스트 신청</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex flex-wrap gap-2 mb-4 text-xs text-slate-400">
+                <span class="px-2 py-1 rounded bg-slate-800">제작기간 3일</span>
+                <span class="px-2 py-1 rounded bg-slate-800">합격 실적 통계</span>
+                <span class="px-2 py-1 rounded bg-slate-800">레벨테스트 예약</span>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                학부모의 불안 요소를 해소하는 4단계 초밀착 관리 시스템과 화려한 합격 실적을 전면에 배치하여 입학 대기 상담 300건을 달성했습니다.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6">
+            <a href="portfolio/academy.html" target="_blank" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-brand-600 text-slate-200 hover:text-white text-xs font-bold text-center transition-all flex items-center justify-center gap-1.5 border border-slate-700/60 hover:border-brand-500">
+              <span>라이브 데모 사이트 체험</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 제작 프로세스 (Process) -->
+  <section id="process" class="py-24 px-6 relative">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16 sm:mb-20">
+        <h2 class="text-xs uppercase tracking-widest text-brand-400 font-bold mb-3">Workflow</h2>
+        <p class="text-2xl sm:text-3xl font-extrabold text-white">불필요한 군더더기 없는 4단계 프로세스</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 relative">
+        <div class="glass-card p-6 rounded-2xl relative">
+          <div class="text-4xl font-black text-brand-500/20 mb-3">01</div>
+          <h4 class="text-base sm:text-lg font-bold text-white mb-2">1:1 요구사항 인터뷰</h4>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            비즈니스 목표, 타깃 고객, 레퍼런스를 꼼꼼히 확인하고 명확한 개발 범위를 정의합니다.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl relative">
+          <div class="text-4xl font-black text-brand-500/20 mb-3">02</div>
+          <h4 class="text-base sm:text-lg font-bold text-white mb-2">세일즈 기획 & 카피라이팅</h4>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            고객을 설득하는 메시지 구성과 섹션 배치를 확정하여 사전 이탈을 최소화합니다.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl relative">
+          <div class="text-4xl font-black text-brand-500/20 mb-3">03</div>
+          <h4 class="text-base sm:text-lg font-bold text-white mb-2">초고속 맞춤 웹 구축</h4>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            모바일 최적화, 애니메이션, 실시간 고객 문의 접수 폼까지 결함 없이 신속하게 제작합니다.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl relative">
+          <div class="text-4xl font-black text-brand-500/20 mb-3">04</div>
+          <h4 class="text-base sm:text-lg font-bold text-white mb-2">검수 & 정식 배포</h4>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            대표님의 최종 컨펌 후 실서버 도메인 연결 및 검색엔진(네이버/구글) 색인을 등록합니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 가격 정찰제 (Pricing) -->
+  <section id="pricing" class="py-24 px-6 bg-slate-900/30 border-y border-slate-800/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-xs uppercase tracking-widest text-brand-400 font-bold mb-3">Pricing</h2>
+        <p class="text-2xl sm:text-4xl font-extrabold text-white">투명한 정찰제 가격 안내</p>
+        <p class="text-slate-400 text-xs sm:text-sm mt-3">상담 후 가격이 갑자기 올라가지 않습니다.<br class="block sm:hidden"> 약속된 범위와 비용으로 투명하게 진행합니다.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 items-stretch">
+        <!-- 1. 스타터 -->
+        <div class="glass-card p-8 rounded-3xl flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-bold text-white mb-2">스타터 패키지</h3>
+            <p class="text-slate-400 text-xs mb-6">1인 기업, 초기 사업 검증, 신속한 런칭 목적</p>
+            <div class="text-4xl font-black text-white mb-6">₩350,000</div>
+            
+            <ul class="space-y-3 text-sm text-slate-300 mb-8">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-400"></i>
+                <span>원페이지 랜딩페이지 (5개 섹션 구성)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-400"></i>
+                <span>100% 모바일 반응형 최적화</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-400"></i>
+                <span>카카오톡 1:1 상담 바로가기 연동</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-400"></i>
+                <span>제작 기간: 3~4일 소요</span>
+              </li>
+              <li class="flex items-center gap-2 text-slate-500">
+                <i data-lucide="minus" class="w-4 h-4"></i>
+                <span>자체 DB 문의 접수 폼</span>
+              </li>
+            </ul>
+          </div>
+          <a href="#contact" class="w-full py-3.5 rounded-xl border border-slate-700 hover:bg-slate-800 text-white text-sm font-semibold text-center transition-colors">
+            스타터 상담 신청
+          </a>
+        </div>
+
+        <!-- 2. 비즈니스 (인기) -->
+        <div class="glass-card p-8 rounded-3xl flex flex-col justify-between border-2 border-brand-500/80 relative shadow-2xl shadow-brand-500/10">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 text-white text-xs font-bold tracking-wide uppercase">
+            가장 인기 있는 옵션
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white mb-2">비즈니스 패키지</h3>
+            <p class="text-slate-400 text-xs mb-6">스타트업, 전문직, 본격적인 고객 리드 수집</p>
+            <div class="text-4xl font-black text-white mb-6">₩650,000</div>
+            
+            <ul class="space-y-3 text-sm text-slate-300 mb-8">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-400"></i>
+                <span>고전환 랜딩페이지 (최대 8개 섹션)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-400"></i>
+                <span>세일즈 퍼널 카피라이팅 교정 및 기획</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-400"></i>
+                <span>실시간 고객 문의 폼 & 이메일/알림 연동</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-400"></i>
+                <span>검색엔진(SEO) & 네이버/구글 색인 세팅</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-400"></i>
+                <span>제작 기간: 4~5일 소요</span>
+              </li>
+            </ul>
+          </div>
+          <a href="#contact" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white text-sm font-bold text-center shadow-lg shadow-brand-500/20 transition-all">
+            비즈니스 패키지 신청
+          </a>
+        </div>
+
+        <!-- 3. 프리미엄 -->
+        <div class="glass-card p-8 rounded-3xl flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-bold text-white mb-2">프리미엄 커스텀</h3>
+            <p class="text-slate-400 text-xs mb-6">다중 페이지 기업 웹사이트 및 맞춤 인터랙션</p>
+            <div class="text-4xl font-black text-white mb-6">₩1,200,000~</div>
+            
+            <ul class="space-y-3 text-sm text-slate-300 mb-8">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-400"></i>
+                <span>다중 서브 페이지 구성 (회사소개, 서비스 등)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-400"></i>
+                <span>맞춤형 브랜드 그래픽 & 마이크로 인터랙션</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-400"></i>
+                <span>관리자(CMS) 또는 노션 데이터베이스 연동</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-400"></i>
+                <span>납품 후 1개월 무상 기술 지원</span>
+              </li>
+            </ul>
+          </div>
+          <a href="#contact" class="w-full py-3.5 rounded-xl border border-slate-700 hover:bg-slate-800 text-white text-sm font-semibold text-center transition-colors">
+            프리미엄 맞춤 상담
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FAQ 섹션 (자주 묻는 질문) -->
+  <section id="faq" class="py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-xs uppercase tracking-widest text-brand-400 font-bold mb-3">FAQ</h2>
+        <p class="text-2xl sm:text-3xl font-extrabold text-white">자주 묻는 질문</p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="glass-card rounded-2xl p-5 sm:p-6">
+          <h4 class="text-sm sm:text-base font-bold text-white flex items-center justify-between cursor-pointer gap-3">
+            <span>Q. 코딩이나 개발 지식이 없어도 직접 텍스트나 사진을 바꿀 수 있나요?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 shrink-0"></i>
+          </h4>
+          <p class="text-sm text-slate-400 mt-3 leading-relaxed">
+            네, 당연합니다. 누구나 쉽게 텍스트와 이미지를 교체하실 수 있는 매뉴얼을 함께 전달해 드리며, 필요 시 노션(Notion)이나 구글 시트와 연동하여 코딩 없이도 실시간 수정이 가능한 환경을 세팅해 드립니다.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 sm:p-6">
+          <h4 class="text-sm sm:text-base font-bold text-white flex items-center justify-between cursor-pointer gap-3">
+            <span>Q. 수정 요청은 몇 번까지 가능한가요?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 shrink-0"></i>
+          </h4>
+          <p class="text-sm text-slate-400 mt-3 leading-relaxed">
+            1차 시안 납품 후 레이아웃 및 텍스트 수정이 총 2회 무료로 제공됩니다. 사전에 요구사항 정의서를 통해 대표님이 원하시는 톤앤매너와 방향성을 100% 일치시키고 들어가므로 대부분 1차 시안에서 만족스럽게 통과됩니다.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 sm:p-6">
+          <h4 class="text-sm sm:text-base font-bold text-white flex items-center justify-between cursor-pointer gap-3">
+            <span>Q. 매달 내야 하는 서버 호스팅 비용이 따로 있나요?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 shrink-0"></i>
+          </h4>
+          <p class="text-sm text-slate-400 mt-3 leading-relaxed">
+            아닙니다! 최신 글로벌 클라우드 아키텍처를 도입하여 대규모 트래픽이 발생하기 전까지 <strong>서버 호스팅 비용은 평생 0원(무료)</strong>입니다. 대표님은 1년에 약 1.5만 원 상당의 고유 도메인(.com 또는 .co.kr) 비용만 부담하시면 됩니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. 문의 폼 & CTA (Contact - 1:1 맞춤 견적 및 컨설팅) -->
+  <section id="contact" class="py-24 px-6 relative bg-gradient-to-b from-slate-900/50 to-slate-950">
+    <div class="max-w-3xl mx-auto">
+      <div class="glass-card p-6 sm:p-10 rounded-3xl border border-brand-500/30 shadow-2xl shadow-brand-500/10 relative">
+        <div class="text-center mb-10">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold mb-3 border border-emerald-500/20">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>전문 담당자 1:1 다이렉트 접수</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">
+            지금 바로 1:1 맞춤 견적을 받아보세요
+          </h2>
+          <p class="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto leading-relaxed">
+            사업에 꼭 필요한 구성만 정직하게 추천해 드립니다.<br class="hidden sm:inline">
+            문의 접수 후 <strong>24시간 이내</strong>에 전문 담당자가 신속히 답변드립니다.
+          </p>
+        </div>
+
+        <!-- 숨겨진 iframe: 화면 이동 없이 백그라운드로 이메일 전송 -->
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+        <!-- 실시간 이메일 전송 폼 (화면 이동 0%, 인라인 완료 메시지 표시) -->
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" target="hidden_iframe" class="space-y-5">
+          <!-- Web3Forms Access Key (대표님 이메일과 1:1 매칭) -->
+          <input type="hidden" name="access_key" id="web3forms_key" value="66ef64d3-25c4-4f59-8fd9-f001c0b4726a">
+          <input type="hidden" name="subject" value="[Studio AXLee] 새로운 1:1 맞춤 웹 제작 견적 문의가 접수되었습니다!">
+          <input type="hidden" name="from_name" value="Studio AXLee 견적 접수 알림">
+
+          <!-- 1행: 기업명 | 담당자 성함 -->
+          <div class="grid sm:grid-cols-2 gap-4 sm:gap-5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">기업명 또는 브랜드명 *</label>
+              <div class="relative">
+                <i data-lucide="building" class="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                <input type="text" name="company" required placeholder="예: (주)에이엑스리 (개인은 '개인' 입력)" class="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 transition-colors">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">담당자 성함 및 직함 *</label>
+              <div class="relative">
+                <i data-lucide="user" class="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                <input type="text" name="name" required placeholder="예: 홍길동 대표 / 팀장" class="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 transition-colors">
+              </div>
+            </div>
+          </div>
+
+          <!-- 2행: 연락처 | 이메일 주소 -->
+          <div class="grid sm:grid-cols-2 gap-4 sm:gap-5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">연락처 (휴대폰 번호) *</label>
+              <div class="relative">
+                <i data-lucide="phone" class="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                <input type="tel" name="phone" required placeholder="010-1234-5678" class="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 transition-colors">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">공식 이메일 주소 *</label>
+              <div class="relative">
+                <i data-lucide="mail" class="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                <input type="email" name="email" required placeholder="name@company.com" class="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 transition-colors">
+              </div>
+            </div>
+          </div>
+
+          <!-- 3행: 업종 선택 | 희망 패키지 선택 -->
+          <div class="grid sm:grid-cols-2 gap-4 sm:gap-5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">업종 및 비즈니스 분야 *</label>
+              <div class="relative">
+                <i data-lucide="briefcase" class="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                <select name="industry" required class="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-white text-sm focus:outline-none focus:border-brand-500 transition-colors cursor-pointer">
+                  <option value="" disabled selected>업종을 선택해 주세요</option>
+                  <option value="IT / SaaS / 소프트웨어 / 스타트업">IT / SaaS / 소프트웨어 / 스타트업</option>
+                  <option value="전문직 (법무법인·회계·노무·세무·의료)">전문직 (법무법인·회계·노무·세무·의료)</option>
+                  <option value="교육 / 학원 / 인강 / 컨설팅">교육 / 학원 / 인강 / 컨설팅</option>
+                  <option value="제조 / B2B 무역 / 엔지니어링">제조 / B2B 무역 / 엔지니어링</option>
+                  <option value="프랜차이즈 / F&B / 외식업">프랜차이즈 / F&B / 외식업</option>
+                  <option value="커머스 / 이커머스 / 브랜드 D2C">커머스 / 이커머스 / 브랜드 D2C</option>
+                  <option value="개인 브랜딩 / 포트폴리오">개인 브랜딩 / 포트폴리오</option>
+                  <option value="기타 분야">기타 분야</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">희망 패키지 선택 *</label>
+              <div class="relative">
+                <i data-lucide="layers" class="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                <select name="package" class="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-white text-sm focus:outline-none focus:border-brand-500 transition-colors cursor-pointer">
+                  <option value="비즈니스 패키지 (₩650,000)">비즈니스 패키지 (₩650,000) - 권장</option>
+                  <option value="스타터 패키지 (₩350,000)">스타터 패키지 (₩350,000)</option>
+                  <option value="프리미엄 커스텀 (₩1,200,000~)">프리미엄 커스텀 (₩1,200,000~)</option>
+                  <option value="상담 후 결정">상담 후 결정</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4행: 설명 및 레퍼런스 -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">만들고자 하는 웹사이트 설명 및 레퍼런스</label>
+            <textarea name="message" rows="4" placeholder="예: B2B 기업 고객 유치용 랜딩페이지가 필요합니다. 원하는 분위기는 https://... 와 유사합니다." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 transition-colors"></textarea>
+          </div>
+
+          <!-- 신뢰 보증 뱃지 3종 -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 text-slate-400 text-xs text-center">
+            <div class="flex items-center justify-center gap-2 p-2 rounded-xl bg-slate-900/50 border border-slate-800">
+              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+              <span>개인정보 100% 보안 보호</span>
+            </div>
+            <div class="flex items-center justify-center gap-2 p-2 rounded-xl bg-slate-900/50 border border-slate-800">
+              <i data-lucide="clock" class="w-4 h-4 text-sky-400"></i>
+              <span>24시간 이내 맞춤 견적 회신</span>
+            </div>
+            <div class="flex items-center justify-center gap-2 p-2 rounded-xl bg-slate-900/50 border border-slate-800">
+              <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
+              <span>숨은 추가 비용 0원 정찰제</span>
+            </div>
+          </div>
+
+          <!-- 제출 버튼 -->
+          <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-base shadow-xl shadow-brand-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer">
+            <i data-lucide="send" class="w-5 h-5"></i>
+            <span id="btnText">무료 맞춤 견적서 및 제작 제안 받기</span>
+          </button>
+
+          <!-- 접수 완료 상태 메시지 영역 (제출 성공 시 표시) -->
+          <div id="formSuccessMessage" class="hidden p-6 sm:p-8 rounded-2xl bg-emerald-950/70 border border-emerald-500/60 text-center animate-fade-in shadow-2xl">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-500/20 text-emerald-400 mx-auto flex items-center justify-center mb-3">
+              <i data-lucide="check-circle" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+            </div>
+            <h4 class="text-lg sm:text-xl font-bold text-white mb-2">1:1 견적 문의가 성공적으로 접수되었습니다!</h4>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-5">
+              전문 담당자에게 실시간 알림 메일이 안전하게 전송되었습니다.<br>
+              남겨주신 연락처와 이메일로 <strong>24시간 이내</strong>에 신속히 안내해 드리겠습니다.
+            </p>
+            <button type="button" onclick="resetFormState()" class="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 hover:text-white transition border border-slate-700">
+              새로운 문의 추가 작성하기
+            </button>
+          </div>
+
+          <div class="text-center pt-1">
+            <a href="https://open.kakao.com" target="_blank" class="inline-flex items-center gap-2 text-xs text-amber-300 hover:underline">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              <span>카카오톡으로 더 빠르게 1:1 상담하기</span>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 이메일 실시간 전송 & 인라인 완료 안내 스크립트 -->
+  <script>
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const formSuccessMessage = document.getElementById('formSuccessMessage');
+
+    contactForm.addEventListener('submit', function() {
+      // 1. 버튼 텍스트 변경
+      btnText.innerText = '견적서 발송 완료!';
+      
+      // 2. 0.3초 후 버튼 숨기고 접수 완료 성공 카드 표시 (페이지 이동 없이 화면 내에서 전환)
+      setTimeout(() => {
+        submitBtn.classList.add('hidden');
+        formSuccessMessage.classList.remove('hidden');
+        lucide.createIcons();
+      }, 300);
+    });
+
+    function resetFormState() {
+      contactForm.reset();
+      formSuccessMessage.classList.add('hidden');
+      submitBtn.classList.remove('hidden');
+      btnText.innerText = '무료 맞춤 견적서 및 제작 제안 받기';
+      lucide.createIcons();
+    }
+  </script>
+
+  <!-- 10. 푸터 (Footer) -->
+  <footer class="py-12 px-6 border-t border-slate-800/80 text-xs text-slate-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex flex-wrap items-center justify-center md:justify-start gap-y-2 gap-x-3 text-center md:text-left">
+        <div class="flex items-center gap-2">
+          <img src="logo.jpg" alt="Studio AXLee 로고" class="w-7 h-7 rounded-lg object-cover border border-sky-400/30">
+          <span class="text-white font-bold text-base">Studio AXLee</span>
+        </div>
+        <span class="hidden sm:inline text-slate-600">|</span>
+        <span>대표자: 이상준</span>
+        <span class="text-slate-600">|</span>
+        <span>사무실: 서울 강남구 삼성로 103길 6, 2층</span>
+        <span class="hidden sm:inline text-slate-600">|</span>
+        <span class="break-all">이메일: <a href="mailto:ideajune@gmail.com" class="hover:text-slate-300 underline">ideajune@gmail.com</a></span>
+      </div>
+      <div class="text-center md:text-right">
+        <p>© 2026 Studio AXLee. All rights reserved. High-Conversion Web Studio.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lucide 아이콘 렌더링 및 모바일 네비게이션 제어 스크립트 -->
+  <script>
+    lucide.createIcons();
+
+    // 모바일 햄버거 메뉴 토글 로직
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        mobileMenuBtn.innerHTML = isHidden 
+          ? '<i data-lucide="menu" class="w-6 h-6"></i>' 
+          : '<i data-lucide="x" class="w-6 h-6"></i>';
+        lucide.createIcons();
+      });
+
+      // 메뉴 링크 클릭 시 자동으로 드롭다운 닫기
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+          lucide.createIcons();
+        });
+      });
+    }
+  </script>
+
+  <!-- [신규] 히어로 배경 인터랙티브 네온 네트워크 & 시네마틱 웨이브 캔버스 엔진 -->
+  <script>
+    (function initHeroMotionBackground() {
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width, height;
+
+      // 마우스 위치 추적
+      const mouse = { x: null, y: null, radius: 150 };
+      window.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+      window.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      // 리사이즈 핸들러
+      function resize() {
+        width = canvas.width = canvas.parentElement.offsetWidth;
+        height = canvas.height = canvas.parentElement.offsetHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      // 파티클 노드 생성 (네트워크 별빛)
+      const particleCount = Math.floor(Math.min(width, 1200) / 18);
+      const particles = [];
+      const colors = ['#38bdf8', '#818cf8', '#a78bfa', '#60a5fa'];
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.6,
+          vy: (Math.random() - 0.5) * 0.6,
+          radius: Math.random() * 2 + 1,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          baseAlpha: Math.random() * 0.5 + 0.3
+        });
+      }
+
+      // 웨이브 파동 애니메이션 변수
+      let step = 0;
+
+      function drawWaves() {
+        step += 0.015;
+        const waveConfigs = [
+          { color: 'rgba(56, 189, 248, 0.12)', length: 0.003, amplitude: 50, speed: 0.02, offset: 0.6 },
+          { color: 'rgba(129, 140, 248, 0.10)', length: 0.002, amplitude: 70, speed: 0.015, offset: 0.68 },
+          { color: 'rgba(192, 132, 252, 0.08)', length: 0.004, amplitude: 40, speed: 0.025, offset: 0.75 }
+        ];
+
+        waveConfigs.forEach(w => {
+          ctx.beginPath();
+          ctx.moveTo(0, height);
+          for (let x = 0; x <= width; x += 10) {
+            const y = height * w.offset + Math.sin(x * w.length + step * (w.speed * 80)) * w.amplitude;
+            ctx.lineTo(x, y);
+          }
+          ctx.lineTo(width, height);
+          ctx.closePath();
+          ctx.fillStyle = w.color;
+          ctx.fill();
+        });
+      }
+
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+
+        // 1. 시네마틱 네온 웨이브 그리기 (하단부 굽이치는 디지털 파동)
+        drawWaves();
+
+        // 2. 파티클 네트워크 연결선 및 노드 그리기
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+
+          // 이동
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+
+          // 마우스 반응
+          if (mouse.x !== null && mouse.y !== null) {
+            const dx = mouse.x - p.x;
+            const dy = mouse.y - p.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < mouse.radius) {
+              const force = (mouse.radius - dist) / mouse.radius;
+              p.x -= (dx / dist) * force * 2;
+              p.y -= (dy / dist) * force * 2;
+            }
+          }
+
+          // 파티클 그리기
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = p.color;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          // 노드 간 연결선
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 110) {
+              const alpha = (1 - dist / 110) * 0.22;
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(56, 189, 248, ${alpha})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(render);
+      }
+
+      render();
+    })();
+  </script>
+</body>
+</html>
