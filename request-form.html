@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>웹사이트 & 랜딩페이지 제작 요구사항 정의서 | Studio AXLee</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    body {
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background-color: #0b0f19;
+      color: #f1f5f9;
+    }
+    .glass-card {
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .check-card input:checked + div {
+      border-color: #6366f1;
+      background: rgba(99, 102, 241, 0.14);
+      box-shadow: 0 0 0 1px #6366f1;
+    }
+    .check-card input:checked + div .check-icon {
+      background-color: #6366f1;
+      border-color: #6366f1;
+      color: #fff;
+    }
+    @media print {
+      body { background: #fff !important; color: #111 !important; }
+      .glass-card { background: #fff !important; border: 1px solid #cbd5e1 !important; box-shadow: none !important; }
+      .no-print { display: none !important; }
+      input, textarea, select { border: 1px solid #94a3b8 !important; color: #000 !important; background: #fff !important; }
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-24">
+
+  <!-- Top Header -->
+  <header class="border-b border-white/10 bg-slate-950/80 backdrop-blur-md sticky top-0 z-40 no-print">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5 text-white font-bold text-lg">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-sm">
+          <i class="fa-solid fa-bolt"></i>
+        </span>
+        <span>Studio AXLee</span>
+        <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">요구사항 정의서</span>
+      </a>
+      <div class="flex items-center gap-2">
+        <button type="button" onclick="window.print()" class="px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/10 transition flex items-center gap-1.5">
+          <i class="fa-solid fa-print"></i> PDF 저장 / 인쇄
+        </button>
+        <button type="button" onclick="copyFormattedSpec()" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition flex items-center gap-1.5 shadow-lg shadow-indigo-600/30">
+          <i class="fa-regular fa-copy"></i> 작성 내용 복사하기
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 pt-10">
+    <!-- Hero Title -->
+    <div class="glass-card rounded-2xl p-6 sm:p-8 mb-8 border-l-4 border-l-indigo-500">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-bold tracking-wider uppercase text-indigo-400">CLIENT REQUIREMENTS SPECIFICATION</span>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">웹사이트 및 랜딩페이지 제작 요구사항 정의서</h1>
+          <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+            비즈니스 목표에 정확히 부합하는 고전환 웹사이트를 제작하기 위한 기능구현 요청서입니다.<br class="hidden sm:inline" />
+            아직 정해지지 않은 항목은 비워두시거나 <span class="text-indigo-300 font-medium">'전문가 추천 희망'</span>을 선택해 주시면 최적의 방향으로 제안해 드립니다.
+          </p>
+        </div>
+        <div class="bg-slate-900/90 border border-white/10 rounded-xl p-4 min-w-[210px] text-xs space-y-1.5">
+          <div class="text-slate-400 flex justify-between"><span>문서 구분</span><span class="text-white font-semibold">기능구현 요청서</span></div>
+          <div class="text-slate-400 flex justify-between"><span>작성 소요시간</span><span class="text-indigo-400 font-semibold">약 3~5분</span></div>
+          <div class="text-slate-400 flex justify-between"><span>제출 방식</span><span class="text-emerald-400 font-semibold">복사 후 카톡/이메일 전달</span></div>
+        </div>
+      </div>
+    </div>
+
+    <form id="specForm" class="space-y-8" onsubmit="event.preventDefault(); copyFormattedSpec();">
+
+      <!-- STEP 1: 기본 정보 -->
+      <section class="glass-card rounded-2xl p-6 sm:p-8">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+          <span class="w-8 h-8 rounded-lg bg-indigo-500/20 border border-indigo-500/40 text-indigo-400 font-bold flex items-center justify-center text-sm">01</span>
+          <div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">고객사 기본 정보</h2>
+            <p class="text-xs text-slate-400">안내 및 견적 회신을 받으실 담당자 정보를 입력해 주세요.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">기업 / 브랜드명 <span class="text-rose-400">*</span></label>
+            <input type="text" id="brandName" placeholder="예: 스튜디오 액슬리 / 법무법인 정율" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-sm focus:outline-none focus:border-indigo-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">담당자 성함 / 직책 <span class="text-rose-400">*</span></label>
+            <input type="text" id="clientName" placeholder="예: 홍길동 대표 / 마케팅 팀장" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-sm focus:outline-none focus:border-indigo-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">연락처 (휴대폰) <span class="text-rose-400">*</span></label>
+            <input type="tel" id="clientPhone" placeholder="예: 010-1234-5678" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-sm focus:outline-none focus:border-indigo-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">이메일 주소</label>
+            <input type="email" id="clientEmail" placeholder="예: contact@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-sm focus:outline-none focus:border-indigo-500" />
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-xs font-semibold text-slate-300 mb-2">현재 운영 중인 웹사이트 또는 SNS 주소 (있을 경우)</label>
+            <input type="text" id="currentUrl" placeholder="예: https://... 또는 인스타그램 @아이디, 네이버 블로그 주소 등" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-sm focus:outline-none focus:border-indigo-500" />
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 2: 프로젝트 유형 및 비즈니스 목표 -->
+      <section class="glass-card rounded-2xl p-6 sm:p-8">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+          <span class="w-8 h-8 rounded-lg bg-indigo-500/20 border border-indigo-500/40 text-indigo-400 font-bold flex items-center justify-center text-sm">02</span>
+          <div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">제작 유형 및 비즈니스 목표</h2>
+            <p class="text-xs text-slate-400">어떤 목적의 사이트가 필요하신지 선택해 주세요 (중복 선택 가능).</p>
+          </div>
+        </div>
+
+        <label class="block text-xs font-semibold text-slate-300 mb-3">희망 제작 유형 (복수 선택 가능)</label>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
+          <label class="check-card cursor-pointer">
+            <input type="checkbox" name="projectType" value="고전환 원페이지 랜딩페이지" class="sr-only" checked />
+            <div class="p-4 rounded-xl border border-white/10 bg-slate-900/60 transition flex items-start gap-3">
+              <span class="check-icon w-5 h-5 rounded border border-slate-600 flex items-center justify-center text-xs mt-0.5 shrink-0"><i class="fa-solid fa-check"></i></span>
+              <div>
+                <div class="text-sm font-bold text-white">고전환 원페이지 랜딩</div>
+                <div class="text-xs text-slate-400 mt-0.5">광고 유입 후 DB 수집·문의 전환 집중형</div>
+              </div>
+            </div>
+          </label>
+          <label class="check-card cursor-pointer">
+            <input type="checkbox" name="projectType" value="기업/브랜드 공식 홈페이지" class="sr-only" />
+            <div class="p-4 rounded-xl border border-white/10 bg-slate-900/60 transition flex items-start gap-3">
+              <span class="check-icon w-5 h-5 rounded border border-slate-600 flex items-center justify-center text-xs mt-0.5 shrink-0"><i class="fa-solid fa-check"></i></span>
+              <div>
+                <div class="text-sm font-bold text-white">기업/브랜드 홈페이지</div>
+                <div class="text-xs text-slate-400 mt-0.5">회사 소개, 서비스 안내, 포트폴리오 구축</div>
+              </div>
+            </div>
+          </label>
+          <label class="check-card cursor-pointer">
+            <input type="checkbox" name="projectType" value="전문직/학원/병원 맞춤형 사이트" class="sr-only" />
+            <div class="p-4 rounded-xl border border-white/10 bg-slate-900/60 transition flex items-start gap-3">
+              <span class="check-icon w-5 h-5 rounded border border-slate-600 flex items-center justify-center text-xs mt-0.5 shrink-0"><i class="fa-solid fa-check"></i></span>
+              <div>
+                <div class="text-sm font-bold text-white">전문직·교육·병원 특화</div>
+                <div class="text-xs text-slate-400 mt-0.5">로펌, 세무, 학원, 병원 등 신뢰도 중심</div>
+              </div>
+            </div>
+          </label>
+          <label class="check-card cursor-pointer">
+            <input type="checkbox" name="projectType" value="SaaS / IT 프로덕트 소개 페이지" class="sr-only" />
+            <div class="p-4 rounded-xl border border-white/10 bg-slate-900/60 transition flex items-start gap-3">
+              <span class="check-icon w-5 h-5 rounded border border-slate-600 flex items-center justify-center text-xs mt-0.5 shrink-0"><i class="fa-solid fa-check"></i></span>
+              <div>
+                <div class="text-sm font-bold text-white">SaaS / IT 솔루션 소개</div>
+                <div class="text-xs text-slate-400 mt-0.5">기능 대시보드 시연, 요금제, 무료 체험 유도</div>
+              </div>
+            </div>
+          </label>
+          <label class="check-card cursor-pointer">
+            <input type="checkbox" name="projectType" value="기존 사이트 리뉴얼" class="sr-only" />
+            <div class="p-4 rounded-xl border border-white/10 bg-slate-900/60 transition flex items-start gap-3">
+              <span class="check-icon w-5 h-5 rounded border border-slate-600 flex items-center justify-center text-xs mt-0.5 shrink-0"><i class="fa-solid fa-check"></i></span>
+              <div>
+                <div class="text-sm font-bold text-white">기존 홈페이지 리뉴얼</div>
+                <div class="text-xs text-slate-400 mt-0.5">노후 디자인 개선 및 모바일·전환율 극대화</div>
+              </div>
+            </div>
+          </label>
+          <label class="check-card cursor-pointer">
+            <input type="checkbox" name="projectType" value="전문가 상담 후 결정 희망" class="sr-only" />
+            <div class="p-4 rounded-xl border border-white/10 bg-slate-900/60 transition flex items-start gap-3">
+              <span class="check-icon w-5 h-5 rounded border border-slate-600 flex items-center justify-center text-xs mt-0.5 shrink-0"><i class="fa-solid fa-check"></i></span>
+              <div>
+                <div class="text-sm font-bold text-white">전문가 추천 희망</div>
+                <div class="text-xs text-slate-400 mt-0.5">업종과 예산에 맞는 최적 구조 제안 요청</div>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div class="sm:col-span-2">
+            <label class="block text-xs font-semibold text-slate-300 mb-2">주력 서비스/상품 한 줄 소개 & 우리만의 강점 (USP)</label>
+            <textarea id="uspText" rows="2" placeholder="예: 중소기업 대상 기장/절세 컨설팅 전문 세무법인입니다. 평균 경력 15년 이상 세무사가 1:1 전담하며 초기 상담이 무료입니다." class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-sm focus:outline-none focus:border-indigo-500"></textarea>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">핵심 타겟 고객층</label>
+            <input type="text" id="targetAudience" placeholder="예: 30~50대 법인 대표, 대치동 고등 학부모 등" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-sm focus:outline-none focus:border-indigo-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">사이트의 최우선 목표 (1순위)</label>
+            <select id="primaryGoal" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-sm focus:outline-none focus:border-indigo-500">
+              <option value="상담 신청 / 견적 문의 DB 확보 (폼 제출)">상담 신청 / 견적 문의 DB 확보 (폼 제출)</option>
+              <option value="전화 연결 / 카카오톡 실시간 상담 유도">전화 연결 / 카카오톡 실시간 상담 유도</option>
+              <option value="브랜드 신뢰도 및 전문성 구축 (포트폴리오/레퍼런스)">브랜드 신뢰도 및 전문성 구축 (포트폴리오/레퍼런스)</option>
+              <option value="무료 체험 신청 / 서비스 가입 유도">무료 체험 신청 / 서비스 가입 유도</option>
+              <option value="이벤트 / 사전예약 접수">이벤트 / 사전예약 접수</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 3: 희망 섹션 구성 및 원고/디자인 -->
+      <section class="glass-card rounded-2xl p-6 sm:p-8">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+          <span class="w-8 h-8 rounded-lg bg-indigo-500/20 border border-indigo-500/40 text-indigo-400 font-bold flex items-center justify-center text-sm">03</span>
+          <div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">페이지 섹션 구성 및 디자인 레퍼런스</h2>
+            <p class="text-xs text-slate-400">페이지에 포함하고 싶은 섹션과 디자인 스타일을 선택해 주세요.</p>
+          </div>
+        </div>
+
+        <label class="block text-xs font-semibold text-slate-300 mb-3">포함 희망 섹션 (체크박스 선택)</label>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 mb-6 text-xs sm:text-sm">
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="sections" value="Hero 메인 비주얼 & 핵심 헤드라인" checked class="accent-indigo-500 w-4 h-4" />
+            <span>Hero 메인 모션 비주얼</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="sections" value="고객 문제 제기 & 공감 섹션" checked class="accent-indigo-500 w-4 h-4" />
+            <span>고객 문제 제기 & 공감</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="sections" value="핵심 서비스 & 차별화 강점" checked class="accent-indigo-500 w-4 h-4" />
+            <span>핵심 서비스 & 특장점</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="sections" value="누적 실적/수치 데이터 카운터" checked class="accent-indigo-500 w-4 h-4" />
+            <span>실적·데이터 지표 카운터</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="sections" value="포트폴리오 / 성공 사례" class="accent-indigo-500 w-4 h-4" />
+            <span>포트폴리오 / 성공 사례</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="sections" value="대표/전문가/강사진 프로필 소개" class="accent-indigo-500 w-4 h-4" />
+            <span>전문가·강사진 프로필</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="sections" value="서비스 진행 절차 (Process)" class="accent-indigo-500 w-4 h-4" />
+            <span>진행 절차 (Process)</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="sections" value="요금제 / 패키지 안내" class="accent-indigo-500 w-4 h-4" />
+            <span>요금제 / 패키지 비교표</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="sections" value="고객 후기 / 실제 리뷰" checked class="accent-indigo-500 w-4 h-4" />
+            <span>고객 후기 / 리뷰</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="sections" value="자주 묻는 질문 (FAQ)" checked class="accent-indigo-500 w-4 h-4" />
+            <span>자주 묻는 질문 (FAQ)</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="sections" value="시설/오피스 갤러리 & 오시는 길" class="accent-indigo-500 w-4 h-4" />
+            <span>시설 갤러리 & 오시는 길</span>
+          </label>
+          <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="sections" value="하단 상담 신청 폼 (Contact)" checked class="accent-indigo-500 w-4 h-4" />
+            <span>상담 신청 폼 (Contact)</span>
+          </label>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">원고(카피라이팅) 준비 상태</label>
+            <select id="copyState" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-sm focus:outline-none focus:border-indigo-500">
+              <option value="초안/키워드만 있음 (고전환 세일즈 카피라이팅 윤문·기획 요청)">초안/키워드만 있음 (세일즈 카피라이팅 윤문·기획 요청)</option>
+              <option value="기획안과 문구가 모두 준비되어 있음">기획안과 문구가 모두 준비되어 있음</option>
+              <option value="자료가 거의 없어 전체 기획 및 카피 작성 의뢰 희망">자료가 거의 없어 전체 기획 및 카피 작성 의뢰 희망</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">사진 및 이미지 자료 보유 여부</label>
+            <select id="imageState" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-sm focus:outline-none focus:border-indigo-500">
+              <option value="로고만 보유 (맞춤형 한국인/현장 이미지 생성 및 프리미엄 에셋 활용 희망)">로고만 보유 (맞춤형 이미지 생성 및 프리미엄 에셋 희망)</option>
+              <option value="자체 촬영한 고화질 사진(인물, 사무실, 제품) 및 로고 모두 보유">자체 촬영한 고화질 사진 및 로고 모두 보유</option>
+              <option value="로고 및 시각 이미지 전체 제작 필요">로고 및 시각 이미지 전체 제작 필요</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">선호하는 디자인 톤앤매너</label>
+            <select id="designTone" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-sm focus:outline-none focus:border-indigo-500">
+              <option value="다크 & 테크니컬 (IT/SaaS/트렌디한 에이전시 감각)">다크 & 테크니컬 (IT/SaaS/트렌디한 에이전시 감각)</option>
+              <option value="중후함 & 프리미엄 (네이비·골드·명조체 / 로펌·금융·컨설팅)">중후함 & 프리미엄 (네이비·골드·명조체 / 로펌·금융)</option>
+              <option value="에디토리얼 & 아카데믹 (로열 블루·화이트 / 학원·교육·신뢰감)">에디토리얼 & 아카데믹 (로열 블루·화이트 / 학원·교육)</option>
+              <option value="화이트 & 미니멀 (깔끔한 여백, 애플/토스 스타일)">화이트 & 미니멀 (깔끔한 여백, 애플/토스 스타일)</option>
+              <option value="따뜻함 & 친근함 (웜톤/파스텔, 병원·라이프스타일·케어)">따뜻함 & 친근함 (웜톤/파스텔, 병원·라이프스타일)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">참고하고 싶은 레퍼런스 사이트 URL (선택)</label>
+            <input type="text" id="refUrls" placeholder="예: 법무법인 정율 샘플처럼 / 또는 타사 참고 URL 입력" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-sm focus:outline-none focus:border-indigo-500" />
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 4: 기능 구현 요청 사항 -->
+      <section class="glass-card rounded-2xl p-6 sm:p-8">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+          <span class="w-8 h-8 rounded-lg bg-indigo-500/20 border border-indigo-500/40 text-indigo-400 font-bold flex items-center justify-center text-sm">04</span>
+          <div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">기능 구현 요청 사항 (인터랙션 & 마케팅 연동)</h2>
+            <p class="text-xs text-slate-400">웹사이트에 탑재할 세부 기능들을 체크해 주세요.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+          <label class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="features" value="상담 신청 폼 & 이메일/구글시트 자동 저장 연동" checked class="accent-indigo-500 w-4 h-4 mt-0.5" />
+            <div>
+              <div class="font-bold text-white">상담 신청 폼 & DB 자동 수신 연동</div>
+              <div class="text-xs text-slate-400 mt-0.5">고객 문의 시 이메일 발송 또는 구글 시트 자동 기록</div>
+            </div>
+          </label>
+          <label class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="features" value="카카오톡 실시간 상담 & 전화걸기 플로팅 버튼" checked class="accent-indigo-500 w-4 h-4 mt-0.5" />
+            <div>
+              <div class="font-bold text-white">카카오톡 채널 상담 & 전화걸기 고정 버튼</div>
+              <div class="text-xs text-slate-400 mt-0.5">PC/모바일 우측 하단 또는 하단 고정 바 노출</div>
+            </div>
+          </label>
+          <label class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="features" value="실시간 견적 / ROI 계산기 슬라이더" class="accent-indigo-500 w-4 h-4 mt-0.5" />
+            <div>
+              <div class="font-bold text-white">실시간 견적 / ROI(도입효과) 계산기</div>
+              <div class="text-xs text-slate-400 mt-0.5">고객이 조건을 조절하면 예상 혜택/견적이 즉시 계산</div>
+            </div>
+          </label>
+          <label class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="features" value="1분 자가진단 / 맞춤형 추천 인터랙티브 테스트" class="accent-indigo-500 w-4 h-4 mt-0.5" />
+            <div>
+              <div class="font-bold text-white">1분 자가진단 / 맞춤 추천 테스트</div>
+              <div class="text-xs text-slate-400 mt-0.5">질문 클릭에 따라 맞춤 솔루션을 제시하고 상담 유도</div>
+            </div>
+          </label>
+          <label class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="features" value="실시간 현황 티커(Ticker) 및 스크롤 모션 애니메이션" checked class="accent-indigo-500 w-4 h-4 mt-0.5" />
+            <div>
+              <div class="font-bold text-white">실시간 현황 티커 & 고급 스크롤 모션</div>
+              <div class="text-xs text-slate-400 mt-0.5">실시간 접수 롤링 배너 및 시선을 사로잡는 애니메이션</div>
+            </div>
+          </label>
+          <label class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="features" value="검색엔진 최적화(SEO) & 카톡 공유 썸네일(OG 태그) 설정" checked class="accent-indigo-500 w-4 h-4 mt-0.5" />
+            <div>
+              <div class="font-bold text-white">검색엔진 최적화(SEO) & 카톡 공유 썸네일</div>
+              <div class="text-xs text-slate-400 mt-0.5">네이버·구글 검색 등록용 메타태그 및 링크 미리보기</div>
+            </div>
+          </label>
+          <label class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="features" value="광고 전환 추적 픽셀 설치 (GA4 / 메타 픽셀 / 네이버 로그)" class="accent-indigo-500 w-4 h-4 mt-0.5" />
+            <div>
+              <div class="font-bold text-white">광고 전환 추적 스크립트(픽셀) 설치</div>
+              <div class="text-xs text-slate-400 mt-0.5">GA4, 메타(인스타/페북) 픽셀, 네이버 전환 추적 연동</div>
+            </div>
+          </label>
+          <label class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-white/10 cursor-pointer hover:border-indigo-500/50">
+            <input type="checkbox" name="features" value="네이버 지도 / 카카오맵 오시는 길 연동" class="accent-indigo-500 w-4 h-4 mt-0.5" />
+            <div>
+              <div class="font-bold text-white">지도 연동 (오시는 길 안내)</div>
+              <div class="text-xs text-slate-400 mt-0.5">사무실/매장 위치 지도 및 주차·대중교통 안내</div>
+            </div>
+          </label>
+        </div>
+      </section>
+
+      <!-- STEP 5: 일정, 예산 및 기타 요청사항 -->
+      <section class="glass-card rounded-2xl p-6 sm:p-8">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+          <span class="w-8 h-8 rounded-lg bg-indigo-500/20 border border-indigo-500/40 text-indigo-400 font-bold flex items-center justify-center text-sm">05</span>
+          <div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">도메인 · 희망 오픈 일정 · 예산 범위</h2>
+            <p class="text-xs text-slate-400">일정과 예산 범위를 알려주시면 그에 맞춘 최적의 스펙으로 설계해 드립니다.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-5">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">희망 오픈 일정</label>
+            <input type="date" id="targetDate" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-sm focus:outline-none focus:border-indigo-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">예상 예산 범위</label>
+            <select id="budgetRange" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-sm focus:outline-none focus:border-indigo-500">
+              <option value="50만 원 ~ 100만 원 (고전환 커스텀 랜딩 + 모션)">50만 원 ~ 100만 원 (고전환 커스텀 랜딩)</option>
+              <option value="50만 원 이하 (핵심 원페이지 기본형)">50만 원 이하 (핵심 원페이지 기본형)</option>
+              <option value="100만 원 ~ 200만 원 (다중 섹션/페이지 + 맞춤 기능)">100만 원 ~ 200만 원 (프리미엄 맞춤 기능형)</option>
+              <option value="200만 원 이상 (종합 구축 / 별도 협의)">200만 원 이상 (종합 구축 / 별도 협의)</option>
+              <option value="상담 후 견적 안내 희망">상담 후 견적 안내 희망</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-2">도메인 보유 여부</label>
+            <select id="domainStatus" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-sm focus:outline-none focus:border-indigo-500">
+              <option value="미보유 (신규 도메인 구매 또는 무료 도메인 안내 희망)">미보유 (안내 및 세팅 지원 희망)</option>
+              <option value="보유 중 (기존 도메인 연결 희망)">보유 중 (기존 도메인 연결 희망)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-2">기타 특별 요청 사항 (자유 기재)</label>
+          <textarea id="extraNotes" rows="3" placeholder="꼭 들어가야 하는 내용, 피하고 싶은 디자인, 또는 궁금하신 점을 자유롭게 남겨주세요." class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-sm focus:outline-none focus:border-indigo-500"></textarea>
+        </div>
+      </section>
+
+      <!-- Submit / Copy Action Box -->
+      <div class="glass-card rounded-2xl p-6 sm:p-8 border border-indigo-500/40 text-center no-print">
+        <h3 class="text-lg font-bold text-white mb-2">작성을 완료하셨나요?</h3>
+        <p class="text-xs sm:text-sm text-slate-400 mb-6">
+          아래 <span class="text-indigo-300 font-semibold">[작성 내용 한 번에 복사하기]</span> 버튼을 누르면 깔끔하게 정리된 요구사항 정의서가 복사됩니다.<br class="hidden sm:inline" />
+          복사된 내용을 카카오톡 상담창이나 이메일에 그대로 붙여넣기(Ctrl+V) 해주세요!
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <button type="submit" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-xl shadow-indigo-600/30 transition flex items-center justify-center gap-2">
+            <i class="fa-regular fa-copy"></i> 작성 내용 한 번에 복사하기
+          </button>
+          <button type="button" onclick="window.print()" class="w-full sm:w-auto px-6 py-4 rounded-xl font-semibold text-slate-200 bg-slate-800 hover:bg-slate-700 border border-white/10 transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-file-pdf"></i> PDF로 저장 / 인쇄하기
+          </button>
+        </div>
+      </div>
+
+    </form>
+
+    <!-- Preview Modal -->
+    <div id="copyModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/75 p-4 no-print">
+      <div class="bg-slate-900 border border-indigo-500/40 rounded-2xl max-w-2xl w-full p-6 shadow-2xl">
+        <div class="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
+          <div class="flex items-center gap-2 text-emerald-400 font-bold">
+            <i class="fa-solid fa-circle-check text-lg"></i>
+            <span>클립보드에 요구사항 정의서가 복사되었습니다!</span>
+          </div>
+          <button onclick="closeModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+        </div>
+        <p class="text-xs text-slate-300 mb-3">이제 카카오톡, 문자, 또는 이메일 창에 <strong class="text-white">붙여넣기(Ctrl + V)</strong> 하시면 아래 내용이 그대로 전달됩니다.</p>
+        <pre id="previewText" class="bg-slate-950 border border-white/10 rounded-xl p-4 text-xs text-slate-200 overflow-y-auto max-h-80 whitespace-pre-wrap font-mono"></pre>
+        <div class="mt-5 flex justify-end gap-2">
+          <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold">확인</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function getCheckedValues(name) {
+      return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(el => el.value);
+    }
+
+    function copyFormattedSpec() {
+      const brandName = document.getElementById('brandName').value.trim() || '(미입력)';
+      const clientName = document.getElementById('clientName').value.trim() || '(미입력)';
+      const clientPhone = document.getElementById('clientPhone').value.trim() || '(미입력)';
+      const clientEmail = document.getElementById('clientEmail').value.trim() || '(미입력)';
+      const currentUrl = document.getElementById('currentUrl').value.trim() || '없음';
+
+      const projectTypes = getCheckedValues('projectType').join(', ') || '전문가 추천 희망';
+      const uspText = document.getElementById('uspText').value.trim() || '(상담 시 논의)';
+      const targetAudience = document.getElementById('targetAudience').value.trim() || '(상담 시 논의)';
+      const primaryGoal = document.getElementById('primaryGoal').value;
+
+      const sections = getCheckedValues('sections').map(s => `  - ${s}`).join('\n') || '  - 전문가 추천 구성';
+      const copyState = document.getElementById('copyState').value;
+      const imageState = document.getElementById('imageState').value;
+      const designTone = document.getElementById('designTone').value;
+      const refUrls = document.getElementById('refUrls').value.trim() || '없음';
+
+      const features = getCheckedValues('features').map(f => `  - ${f}`).join('\n') || '  - 기본 기능';
+      const targetDate = document.getElementById('targetDate').value || '협의 가능';
+      const budgetRange = document.getElementById('budgetRange').value;
+      const domainStatus = document.getElementById('domainStatus').value;
+      const extraNotes = document.getElementById('extraNotes').value.trim() || '없음';
+
+      const summary = `[Studio AXLee 웹사이트 제작 요구사항 정의서]
+
+1. 고객사 기본 정보
+• 기업/브랜드명: ${brandName}
+• 담당자명/직책: ${clientName}
+• 연락처: ${clientPhone}
+• 이메일: ${clientEmail}
+• 기존 사이트/SNS: ${currentUrl}
+
+2. 제작 유형 및 비즈니스 목표
+• 희망 제작 유형: ${projectTypes}
+• 최우선 목표(1순위): ${primaryGoal}
+• 핵심 타겟 고객: ${targetAudience}
+• 주력 서비스 및 강점(USP): ${uspText}
+
+3. 페이지 구성 및 디자인 요구사항
+• 희망 포함 섹션:
+${sections}
+• 원고(카피) 준비 상태: ${copyState}
+• 이미지 자료 보유 여부: ${imageState}
+• 선호 디자인 톤앤매너: ${designTone}
+• 참고 레퍼런스: ${refUrls}
+
+4. 기능 구현 요청 사항
+${features}
+
+5. 일정 · 예산 · 도메인
+• 희망 오픈일: ${targetDate}
+• 예상 예산 범위: ${budgetRange}
+• 도메인 보유 여부: ${domainStatus}
+
+6. 기타 특별 요청 사항
+• ${extraNotes}`;
+
+      navigator.clipboard.writeText(summary).catch(() => {});
+      document.getElementById('previewText').textContent = summary;
+      const modal = document.getElementById('copyModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('copyModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+  </script>
+</body>
+</html>
